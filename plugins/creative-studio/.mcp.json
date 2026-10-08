@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "trend-sources": {
+      "command": "python3",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/trend_sources.py"],
+      "env": {
+        "YOUTUBE_API_KEY": "${YOUTUBE_API_KEY:-}",
+        "APIFY_TOKEN": "${APIFY_TOKEN:-}",
+        "APIFY_TIKTOK_ACTOR": "${APIFY_TIKTOK_ACTOR:-clockworks~tiktok-scraper}",
+        "APIFY_INSTAGRAM_ACTOR": "${APIFY_INSTAGRAM_ACTOR:-apify~instagram-hashtag-scraper}",
+        "CREATIVE_STUDIO_HOME": "${CREATIVE_STUDIO_HOME:-}"
+      }
+    }
+  }
+}

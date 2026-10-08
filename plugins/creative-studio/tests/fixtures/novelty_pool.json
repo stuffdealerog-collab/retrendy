@@ -1,0 +1,191 @@
+{
+  "_comment": "Test pool for novelty_check (brief: a song about loneliness in a big city). 'expect' is the ideal outcome; 'accept' lists outcomes that count as correct at default thresholds with the default model: 'soft' = kept but soft-flagged for cliche-hunter review (cos 0.70-0.80). dup-2 is a loose paraphrase (cos 0.75) that the 0.8 pool threshold does not collapse: a documented limitation. fresh-1/dup-1 are one idea twice: exactly one of them must be collapsed, either way round.",
+  "concepts": [
+    {
+      "id": "fresh-1",
+      "expect": "kept",
+      "title": "Ключница",
+      "logline": "Сторож дачного кооператива поёт о ящике с запасными ключами соседей.",
+      "concept": "Каждый куплет — один крючок с биркой: чей ключ, когда его оставили и почему за ним больше не приходят. Одиночество — это ключ, который никому не нужно возвращать.",
+      "sample": "Крючок двенадцать, бирка в изоленте,\nВы обещали забрать к сентябрю.\nЯ протираю ваш ключ от веранды\nИ никому про него не говорю.",
+      "accept": [
+        "kept",
+        "duplicate"
+      ],
+      "duplicate_pair": "dup-1"
+    },
+    {
+      "id": "fresh-2",
+      "expect": "kept",
+      "title": "Зонт в такси",
+      "logline": "Забытый на заднем сиденье зонт рассказывает о хозяйке по её маршрутам.",
+      "concept": "Зонт знает её город только по дождливым дням: аптека, офис, остановка, где она однажды долго стояла. Песня — опись находок, где главная находка он сам.",
+      "sample": "Я пролежал под сиденьем до смены,\nВодитель сдал меня в стол находок.\nТам перчатки, ключи и чья-то сменка,\nА я всё помню твой мокрый подъезд.",
+      "accept": [
+        "kept"
+      ]
+    },
+    {
+      "id": "fresh-3",
+      "expect": "kept",
+      "title": "Гарантийный талон",
+      "logline": "Песня написана как гарантийный талон на отношения: что покрывается, а что нет.",
+      "concept": "Пункты гарантии перечисляют, какие поломки устраняются бесплатно, а какие считаются нарушением условий эксплуатации. В припеве — печать сервисного центра, которой уже нет по этому адресу.",
+      "sample": "Гарантия не распространяется\nНа следы от падения с высоты.\nСервисный центр переехал в марте,\nПечать стоит, а адреса нет.",
+      "accept": [
+        "kept"
+      ]
+    },
+    {
+      "id": "fresh-4",
+      "expect": "kept",
+      "title": "Девятый без лифта",
+      "logline": "Гимн курьеру, который поднимается на девятый этаж пешком.",
+      "concept": "Каждый этаж — куплет, каждая площадка — чужая жизнь за дверью: запах жареного лука, лай, детский плач. На девятом ему открывают, не глядя в глаза.",
+      "sample": "Третий: пахнет жареным луком,\nПятый: кто-то учит гаммы до.\nНа девятом мне скажут спасибо\nИ закроют, не посмотрев в лицо.",
+      "accept": [
+        "kept"
+      ]
+    },
+    {
+      "id": "fresh-5",
+      "expect": "kept",
+      "title": "Тихая дискотека",
+      "logline": "Пара расстаётся на тихой дискотеке, слушая в наушниках разные каналы.",
+      "concept": "Они танцуют рядом, но он на синем канале, а она на красном. Каждый поёт свой куплет под свою музыку, и только зал видит, что они давно не в такт.",
+      "sample": "Ты на красном, я на синем,\nМы танцуем, будто вместе.\nТы в наушник шепчешь: любовь,\nА у меня в канале кровь.\nМы будем вечно молодыми.",
+      "accept": [
+        "kept"
+      ]
+    },
+    {
+      "id": "cliche-1",
+      "expect": "cliche",
+      "title": "Ливень",
+      "logline": "Героиня танцует под проливным дождём и наконец чувствует себя свободной.",
+      "concept": "Она выходит из офиса, бросает зонт и танцует под дождём посреди улицы, смывая с себя всё лишнее.",
+      "accept": [
+        "cliche",
+        "cliche_collage"
+      ]
+    },
+    {
+      "id": "cliche-2",
+      "expect": "cliche",
+      "title": "Burning letters",
+      "logline": "After the breakup he burns all her letters in the fireplace so he can finally forget her.",
+      "concept": "Photos and letters curl in the flames while he swears it is over.",
+      "accept": [
+        "cliche",
+        "cliche_collage",
+        "soft"
+      ]
+    },
+    {
+      "id": "cliche-3",
+      "expect": "cliche",
+      "title": "Три часа ночи",
+      "logline": "Пьяный звонок бывшей посреди ночи.",
+      "concept": "Он выпил лишнего и в три часа ночи набирает её номер, хотя знает, что не стоит.",
+      "accept": [
+        "cliche"
+      ]
+    },
+    {
+      "id": "cliche-4",
+      "expect": "cliche",
+      "title": "Phoenix",
+      "logline": "After hitting rock bottom she rises from the ashes like a phoenix.",
+      "concept": "A comeback anthem: she was broken, now she rises from the ashes stronger than before.",
+      "accept": [
+        "cliche"
+      ]
+    },
+    {
+      "id": "cliche-5",
+      "expect": "cliche",
+      "title": "Вырваться",
+      "logline": "Парень из маленького городка мечтает уехать в большой город.",
+      "concept": "Он смотрит на поезда и мечтает вырваться из своего маленького городка в столицу, где всё по-настоящему.",
+      "accept": [
+        "cliche"
+      ]
+    },
+    {
+      "id": "collage-1",
+      "expect": "cliche_collage",
+      "title": "Огни и дождь",
+      "logline": "Ночью под дождём я звоню тебе, но телефон молчит, и я смотрю на огни города.",
+      "concept": "Он стоит под дождём, телефон молчит, а вокруг огни ночного города.",
+      "accept": [
+        "cliche_collage",
+        "cliche"
+      ]
+    },
+    {
+      "id": "predictable-1",
+      "expect": "predictable",
+      "title": "Невидимая",
+      "logline": "В час пик в метро тысячи людей, а героиня чувствует себя невидимой и никому не нужной.",
+      "concept": "Толпа мегаполиса и одиночество среди людей.",
+      "accept": [
+        "predictable"
+      ]
+    },
+    {
+      "id": "predictable-2",
+      "expect": "predictable",
+      "title": "Doomscroll",
+      "logline": "He scrolls through everyone's perfect lives on his phone at 2 am, feeling more alone than ever.",
+      "concept": "Social media at night makes him feel disconnected from everyone.",
+      "accept": [
+        "predictable",
+        "soft"
+      ]
+    },
+    {
+      "id": "repeat-1",
+      "expect": "repeat",
+      "title": "Адреса",
+      "logline": "Диспетчер такси по рации перечисляет адреса, где они бывали с бывшей, ни разу не называя её имени.",
+      "concept": "Припев «машина подана» к третьему разу означает «я сдаюсь».",
+      "accept": [
+        "repeat"
+      ]
+    },
+    {
+      "id": "repeat-2",
+      "expect": "repeat",
+      "title": "Terms and conditions",
+      "logline": "A love song structured as the terms of service you must accept before dating me.",
+      "concept": "Clauses, liability waivers and an 'I agree' checkbox as the chorus.",
+      "accept": [
+        "repeat"
+      ]
+    },
+    {
+      "id": "dup-1",
+      "expect": "duplicate",
+      "title": "Ключи соседей",
+      "logline": "Сторож дачного кооператива поёт о ящике, где висят запасные ключи соседей.",
+      "concept": "Каждый куплет — крючок с биркой: чей это ключ и почему за ним никто не возвращается.",
+      "accept": [
+        "kept",
+        "duplicate"
+      ],
+      "duplicate_pair": "fresh-1"
+    },
+    {
+      "id": "dup-2",
+      "expect": "duplicate",
+      "title": "Курьер",
+      "logline": "Ода курьеру, который тащит заказ на девятый этаж пешком без лифта.",
+      "concept": "Этаж за этажом — чужие жизни за дверями, а наверху ему открывают, не глядя.",
+      "accept": [
+        "duplicate",
+        "kept",
+        "soft"
+      ]
+    }
+  ]
+}

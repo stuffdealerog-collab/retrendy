@@ -1,0 +1,17 @@
+{
+  "name": "retrendy",
+  "description": "Local marketplace for the creative-studio plugin",
+  "owner": {
+    "name": "retrendy"
+  },
+  "plugins": [
+    {
+      "name": "creative-studio",
+      "source": "./plugins/creative-studio",
+      "description": "Creative engine that generates genuinely non-average ideas: trends -> insight -> parallel divergence -> novelty filter -> critic + tournament -> safe / bold / director's versions.",
+      "version": "0.1.0",
+      "category": "productivity",
+      "tags": ["creativity", "ideation", "trends"]
+    }
+  ]
+}

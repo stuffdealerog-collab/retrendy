@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+# Runtime state if the dev fallback (<plugin>/data) is used: never commit it.
+plugins/creative-studio/data/runs/
+plugins/creative-studio/data/cache/
+plugins/creative-studio/data/brand/
+plugins/creative-studio/data/cliche-bank/
+plugins/creative-studio/data/config.json
+plugins/creative-studio/data/*.lock
+plugins/creative-studio/data/trend-snapshots/*.json

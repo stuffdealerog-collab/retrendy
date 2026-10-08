@@ -1,0 +1,79 @@
+{
+  "novelty": {
+    "backend": "auto",
+    "model": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+    "lite_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "threshold": 0.8,
+    "soft_threshold": 0.7,
+    "collage_second_threshold": 0.62,
+    "pool_duplicate_threshold": 0.8,
+    "line_threshold": 0.8,
+    "line_min_chars": 12,
+    "history_window": 200,
+    "history_same_domain_only": true,
+    "lexical_threshold": 0.55,
+    "lexical_soft_threshold": 0.4,
+    "model_cache_dir": null
+  },
+  "pipeline": {
+    "concepts_per_branch": 8,
+    "head_samples_per_branch": 4,
+    "tail_probability": 0.15,
+    "min_survivors": 10,
+    "max_refill_rounds": 1,
+    "tournament_size": 6,
+    "finalists": 3,
+    "memory_digest_size": 40,
+    "trend_snapshot_max_age_days": 14,
+    "finalist_diversity_lambda": 0.7
+  },
+  "branches": [
+    {
+      "id": "A",
+      "agent": "creative-studio:diverger",
+      "strategy": "structural",
+      "label": "Structural transformation (SCAMPER + TRIZ)",
+      "draw": {"scamper": 2, "triz-40": 3}
+    },
+    {
+      "id": "B",
+      "agent": "creative-studio:diverger",
+      "strategy": "disruption",
+      "label": "Disruption under constraint (oblique prompts + constraints)",
+      "draw": {"oblique-strategies": 3, "constraints": 2}
+    },
+    {
+      "id": "C",
+      "agent": "creative-studio:diverger",
+      "strategy": "counter-trend",
+      "label": "Counter-trend and white space, tail-only verbalized sampling",
+      "draw": {"triz-40": 1, "oblique-strategies": 1}
+    },
+    {
+      "id": "D",
+      "agent": "creative-studio:outsider",
+      "strategy": "outsider-blend",
+      "label": "Outsider: conceptual blending with a foreign domain",
+      "draw": {"foreign-domains": 2}
+    }
+  ],
+  "rubric": {
+    "scale": [1, 5],
+    "weights": {
+      "novelty": 0.25,
+      "surprise": 0.2,
+      "usefulness": 0.15,
+      "brief_fit": 0.2,
+      "craft": 0.2
+    },
+    "embedding_novelty_blend": 0.3,
+    "audience_weight": 0.1,
+    "unsupported_evidence_penalty": 1,
+    "tournament_weight": 0.5
+  },
+  "session_context": {
+    "max_chars": 6000,
+    "journal_entries": 8
+  },
+  "active_brand": null
+}

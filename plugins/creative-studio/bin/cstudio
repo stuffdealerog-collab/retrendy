@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# creative-studio CLI. Claude Code puts the plugin's bin/ on PATH for the Bash
+# tool, so skills call `cstudio <command>` without knowing the install path.
+#   cstudio novelty ...   -> scripts/novelty_check.py (via `uv run --script` when uv
+#                           exists, so fastembed installs itself; CS_NO_UV=1 to skip)
+#   cstudio log ...       -> scripts/log_generation.py
+#   cstudio <other> ...   -> scripts/studio.py <other>
+set -euo pipefail
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export HF_HUB_DISABLE_PROGRESS_BARS=1 TOKENIZERS_PARALLELISM=false
+PY="${CS_PYTHON:-python3}"
+cmd="${1:-help}"
+[ $# -gt 0 ] && shift
+case "$cmd" in
+  novelty)
+    if [ "${CS_NO_UV:-}" != "1" ] && command -v uv >/dev/null 2>&1; then
+      exec uv run --quiet --script "$ROOT/scripts/novelty_check.py" "$@"
+    fi
+    exec "$PY" "$ROOT/scripts/novelty_check.py" "$@" ;;
+  log) exec "$PY" "$ROOT/scripts/log_generation.py" "$@" ;;
+  help|-h|--help) exec "$PY" "$ROOT/scripts/studio.py" --help ;;
+  *) exec "$PY" "$ROOT/scripts/studio.py" "$cmd" "$@" ;;
+esac

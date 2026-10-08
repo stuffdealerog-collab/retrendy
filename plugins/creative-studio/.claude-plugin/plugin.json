@@ -1,0 +1,10 @@
+{
+  "name": "creative-studio",
+  "version": "0.1.0",
+  "description": "Domain-agnostic creative engine: trend radar, insight, parallel divergent generation with different thinking strategies, embedding novelty filter against cliché banks and past generations, separate critic with evidence-backed rubric and blind pairwise tournament, taste memory.",
+  "author": {
+    "name": "retrendy"
+  },
+  "license": "MIT",
+  "keywords": ["creativity", "ideation", "trends", "novelty", "lyrics", "brainstorming", "verbalized-sampling"]
+}
