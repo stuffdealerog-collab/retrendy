@@ -1,0 +1,121 @@
+{
+  "seed": 3484842667,
+  "branches": [
+    {
+      "id": "A",
+      "agent": "creative-studio:diverger",
+      "strategy": "structural",
+      "label": "Structural transformation (SCAMPER + TRIZ)",
+      "cards": [
+        {
+          "deck": "scamper",
+          "id": "SC6",
+          "title": "Eliminate",
+          "text": "- Remove the element everyone considers essential (the hero, the product shot, the chorus, the word \"love\") and build around the hole.\n- Remove all but one sense (only sounds, only smells).\n- Cut the explanation: start after the event, end before the resolution."
+        },
+        {
+          "deck": "scamper",
+          "id": "SC5",
+          "title": "Put to another use",
+          "text": "- Use the brief's product, feeling or ritual for a purpose it was never meant for.\n- Make the audience's waste (leftovers, abandoned things, deleted messages) the material.\n- Let the piece itself have a function in the world (a song that is also a password, an ad that is also a form to fill)."
+        },
+        {
+          "deck": "triz-40",
+          "id": "T27",
+          "title": "Cheap and short-lived (Cheap short-living objects)",
+          "text": "Build the piece on disposable things: receipts, tickets, sticky notes, autocorrect suggestions, tea-bag tags."
+        },
+        {
+          "deck": "triz-40",
+          "id": "T05",
+          "title": "Run things in parallel (Merging)",
+          "text": "Make two simultaneous processes share one timeline: the breakup happens during a fire drill; the proposal happens during a software update."
+        },
+        {
+          "deck": "triz-40",
+          "id": "T09",
+          "title": "Pre-empt the objection (Preliminary anti-action)",
+          "text": "Open with the audience's strongest objection or cynicism and build on top of it, instead of hoping they won't think it."
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "agent": "creative-studio:diverger",
+      "strategy": "disruption",
+      "label": "Disruption under constraint (oblique prompts + constraints)",
+      "cards": [
+        {
+          "deck": "oblique-strategies",
+          "id": "O30",
+          "title": "Old person, new thing",
+          "text": "Put a very old perspective on a very new phenomenon, or the reverse."
+        },
+        {
+          "deck": "oblique-strategies",
+          "id": "O25",
+          "title": "Make one thing impossible",
+          "text": "Allow exactly one impossible element and keep everything else painfully realistic."
+        },
+        {
+          "deck": "oblique-strategies",
+          "id": "O13",
+          "title": "What is it ashamed of?",
+          "text": "Every subject has an embarrassing side it hides. Lead with that side."
+        },
+        {
+          "deck": "constraints",
+          "id": "K17",
+          "title": "Unreliable narrator",
+          "text": "The speaker gets one fact wrong, and the audience notices before the speaker does."
+        },
+        {
+          "deck": "constraints",
+          "id": "K20",
+          "title": "One-word hook",
+          "text": "The memorable centre is a single word."
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "agent": "creative-studio:diverger",
+      "strategy": "counter-trend",
+      "label": "Counter-trend and white space, tail-only verbalized sampling",
+      "cards": [
+        {
+          "deck": "triz-40",
+          "id": "T11",
+          "title": "Cushion in advance (Beforehand cushioning)",
+          "text": "Build in the failure from the start: the hero already knows it won't work; the product admits its limit upfront."
+        },
+        {
+          "deck": "oblique-strategies",
+          "id": "O21",
+          "title": "Keep the scaffolding",
+          "text": "Leave the construction visible: the draft notes, the stage directions, the counting-in."
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "agent": "creative-studio:outsider",
+      "strategy": "outsider-blend",
+      "label": "Outsider: conceptual blending with a foreign domain",
+      "cards": [
+        {
+          "deck": "foreign-domains",
+          "id": "F38",
+          "title": "Speedrunning",
+          "text": "Splits, routing, glitches as tools, resets, frame-perfect inputs, the run that is ahead of personal best until the last level."
+        },
+        {
+          "deck": "foreign-domains",
+          "id": "F21",
+          "title": "Mycology",
+          "text": "Mycelium networks underground, the fruiting body is only a small visible part, spore prints, decomposition, symbiosis with tree roots."
+        }
+      ]
+    }
+  ]
+}

@@ -126,10 +126,12 @@ def reconcile(home: Path, run_id: str) -> dict:
     rdir = cs.run_dir(home, run_id)
     brief = cs.read_json(rdir / "brief.json", {}) or {}
     pool = {c["id"]: c for c in (cs.read_json(rdir / "pool.json", []) or [])}
-    for art in _artifacts(rdir, "concepts"):  # concepts not yet pooled still get logged
+    records = {}
+    for art in _artifacts(rdir, "concepts"):  # full records, so a concept the hook missed is still logged whole
         for row in concept_records(run_id, art, brief):
+            records.setdefault(row["id"], row)
             pool.setdefault(row["id"], {**row, "concept": row["text"]})
-    updates: dict[str, dict] = {cid: {"id": cid, "run_id": run_id, "status": "candidate"} for cid in pool}
+    updates: dict[str, dict] = {cid: {**records.get(cid, {"id": cid, "run_id": run_id}), "status": "candidate"} for cid in pool}
 
     novelty = cs.read_json(rdir / "novelty.json", {}) or {}
     for f in novelty.get("filtered", []):

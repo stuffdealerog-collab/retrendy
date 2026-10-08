@@ -1,0 +1,14 @@
+CONTROL (plain prompt, no plugin): plain2 -> nearest plain1: {'>=0.80': 4, '0.70-0.80': 2, '0.60-0.70': 5, '<0.60': 5}
+  0.899 «Эхо в пустой квартире» <- «Эхо в пустой комнате»
+  0.861 «Окно напротив» <- «Чужие окна»
+  0.844 «Последний трамвай» <- «Ночной трамвай»
+  0.835 «Чемодан, который не распаковать» <- «Чемодан так и не разобран»
+  0.753 «Вторник, когда всё получилось» <- «Тридцать первый день»
+  0.726 «Дождь без зонта» <- «Дождь по чужому расписанию»
+exact-ish title overlap: 0
+studio filter on plain2 (refs: bank + run1 baseline + plain1 as history): kept 11 filtered {'predictable': 2, 'repeat': 3}
+   Окно напротив -> Its full is too close to a predictable answer to this brief: «Окна соседей напротив, где горит чужая жизнь, а он смотрит и мечтает познакомиться.» (co
+   Чемодан, который не распаковать -> Its full is too close to earlier concept plain1-11 (run plain1): «Чемодан так и не разобран. Вещи лежат в чемодане, как запасной выход: распаковать их
+   Эхо в пустой квартире -> Its full is too close to earlier concept plain1-7 (run plain1): «Эхо в пустой комнате. В квартире без мебели каждый звук возвращается обратно, и песня
+   Последний трамвай -> Its full is too close to earlier concept plain1-10 (run plain1): «Ночной трамвай. Последний трамвай везёт одиноких пассажиров по кругу, и каждый делае
+   Город-незнакомец -> Its full is too close to a predictable answer to this brief: «Герой говорит сам с собой или с городом: «Здравствуй, город, давай знакомиться».» (cos 0

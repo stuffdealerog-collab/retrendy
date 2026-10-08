@@ -1,0 +1,23 @@
+backend: fastembed (sentence-transformers/paraphrase-multilingual-mpnet-base-v2), degraded=False, thresholds={'hard': 0.8, 'soft': 0.7, 'pool_duplicate': 0.8, 'line': 0.8, 'collage_second': 0.62, 'near_duplicate': 0.75}
+references: {'bank': 95, 'baseline': 3, 'history': 3}, counts: {'pool': 17, 'kept': 8, 'filtered': 9, 'by_reason': {'cliche_collage': 2, 'cliche': 3, 'predictable': 1, 'repeat': 2, 'duplicate': 1}, 'soft_flagged': 2, 'line_warnings': 1, 'near_duplicate_pairs': 0}
+
+concept        outcome         ok  match          cos    note
+fresh-1        duplicate       ✓   dup-1          0.97   Duplicate inside the pool of dup-1 «Ключи соседей» (cos 0.97 ≥ 0.80)
+fresh-2        kept            ✓   c_hist000001   0.678  
+fresh-3        kept            ✓   LY-090         0.649  
+fresh-4        kept            ✓   BL-003         0.664  
+fresh-5        kept            ✓   LY-074         0.572  LY-029
+cliche-1       cliche_collage  ✓   LY-001         0.727  Cliché collage: LY-001 «Танец под дождём как жест свободы / dancing in the» (cos 0.73) + L
+cliche-2       soft            ✓   LY-065         0.731  
+cliche-3       cliche          ✓   LY-066         0.959  Its core is too close to cliché LY-066: «Пьяный звонок бывшему в три часа ночи / drunk dia
+cliche-4       cliche          ✓   LY-009         0.81   Its core is too close to cliché LY-009: «Восстать из пепла как феникс / rising from the as
+cliche-5       cliche          ✓   LY-073         0.812  Its logline is too close to cliché LY-073: «Маленький город и мечта уехать в большой / sma
+collage-1      cliche_collage  ✓   LY-002         0.73   Cliché collage: LY-002 «Огни ночного города, неон и отражения в лужах / ci» (cos 0.73) + L
+predictable-1  predictable     ✓   BL-001         0.835  Its sentence 1 is too close to a predictable answer to this brief: «Одинокий человек в тол
+predictable-2  soft            ✓   BL-002         0.707  
+repeat-1       repeat          ✓   c_hist000001   0.927  Its full is too close to earlier concept c_hist000001 (run r_hist): «Машина подана. Диспет
+repeat-2       repeat          ✓   c_hist000002   0.86   Its full is too close to earlier concept c_hist000002 (run r_hist): «Terms of Service. A l
+dup-1          kept            ✓   BL-003         0.597  
+dup-2          kept            ✓   c_hist000001   0.582  
+
+17/17 outcomes acceptable (see 'accept' in tests/fixtures/novelty_pool.json)

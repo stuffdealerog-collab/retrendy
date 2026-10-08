@@ -1,0 +1,645 @@
+{
+ "run_id": "r_20261008_165203_8fd5",
+ "domain": "lyrics",
+ "domain_pack": "full",
+ "backend": "fastembed",
+ "model": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+ "degraded": false,
+ "thresholds": {
+  "hard": 0.8,
+  "soft": 0.7,
+  "pool_duplicate": 0.8,
+  "line": 0.8,
+  "collage_second": 0.62,
+  "near_duplicate": 0.75
+ },
+ "references": {
+  "bank": 97,
+  "baseline": 36,
+  "history": 32
+ },
+ "counts": {
+  "pool": 32,
+  "kept": 30,
+  "filtered": 2,
+  "by_reason": {
+   "cliche_collage": 1,
+   "duplicate": 1
+  },
+  "soft_flagged": 17,
+  "line_warnings": 2,
+  "near_duplicate_pairs": 2
+ },
+ "kept": [
+  {
+   "id": "c_bb9f6887cc",
+   "title": "Излишек отдайте соседям",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.1,
+   "novelty_embed": 0.362,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_5a00f8c97b",
+    "facet": "full",
+    "text": "Нитка. Новичок тянет по городу страховочную нить от двери до работы и до овощного и ставит на каждом углу стрелку «домой», как делают в пещере. Из пещерного дайвинга взяты прокладка путевой нити и пра",
+    "sim": 0.638,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_8e38ac96c5",
+   "title": "Третий слева",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.08,
+   "novelty_embed": 0.36,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-090",
+    "facet": "sentence 2",
+    "text": "Гимн самопринятия «я такая, какая есть» без конкретики / generic self-love anthem: this is me",
+    "sim": 0.64
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_e6b9038078",
+   "title": "Памятка новому знакомому",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.08,
+   "novelty_embed": 0.351,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_ef30fb43e7",
+    "facet": "full",
+    "text": "Контактное лицо. Каждая анкета в новом городе (поликлиника, договор, абонемент) спрашивает, кого уведомить, и он по очереди вписывает туда случайных людей. Структура — графы анкеты. Припев повторяет г",
+    "sim": 0.649,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_e94c57b663",
+   "title": "Папа Бублика",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.07,
+   "novelty_embed": 0.337,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_14a8ef493d",
+    "facet": "full",
+    "text": "Месяц — это много. Ребёнок, которого родители перевезли «на пробу», поздоровался за месяц со всем подъездом. Говорящий — ребёнок со своей арифметикой («месяц — это очень много, а привычка не пришла»).",
+    "sim": 0.663,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_52d73eebc0",
+   "title": "Экскурсия для одного",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.09,
+   "novelty_embed": 0.332,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_4ce00e77b3",
+    "facet": "full",
+    "text": "Четвёртая остановка. Герой за месяц выучил три точки (дом, работа, булочная) и из суеверия не едет дальше четвёртой остановки. Город не огромный и чужой, а крошечный, как три маршрута (I4). Четвёртая ",
+    "sim": 0.668,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_8612f49a88",
+   "title": "Три звонка",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.09,
+   "novelty_embed": 0.328,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-020",
+    "facet": "full",
+    "text": "Тоска по дому как запах маминой кухни и двор, где все друг друга знали, а здесь никто не здоровается.",
+    "sim": 0.672
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_e868d1f624",
+   "title": "Сорок первая",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.08,
+   "novelty_embed": 0.326,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_94abda5cdc",
+    "facet": "full",
+    "text": "Здравствуйте (лифт 7:40). Новосёл подгадывает выход из квартиры под лифт соседа с девятого этажа и три утра подряд репетирует приветствие, которое так и не звучит. Действие целиком в кабине лифта и на",
+    "sim": 0.674,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_a26f163285",
+   "title": "Давно",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.06,
+   "novelty_embed": 0.314,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_0f8e403349",
+    "facet": "sentence 2",
+    "text": "Чужие реплики. Человек на остановке собирает из подслушанных чужих телефонных разговоров единственные фразы, которые звучат как обращённые к нему. Припев состоит из трёх обрывков от трёх незнакомцев, ",
+    "sim": 0.686,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_b8241bb8eb",
+   "title": "Добавить в словарь",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.07,
+   "novelty_embed": 0.314,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_0f8e403349",
+    "facet": "logline",
+    "text": "Чужие реплики. Человек на остановке собирает из подслушанных чужих телефонных разговоров единственные фразы, которые звучат как обращённые к нему. Припев состоит из трёх обрывков от трёх незнакомцев, ",
+    "sim": 0.686,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_733c95a211",
+   "title": "Неудобно хорошо",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.1,
+   "novelty_embed": 0.314,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_0f8e403349",
+    "facet": "sentence 4",
+    "text": "Чужие реплики. Человек на остановке собирает из подслушанных чужих телефонных разговоров единственные фразы, которые звучат как обращённые к нему. Припев состоит из трёх обрывков от трёх незнакомцев, ",
+    "sim": 0.686,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_3f86ed11fd",
+   "title": "Игорь",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.07,
+   "novelty_embed": 0.31,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_b8730d1dd1",
+    "facet": "full",
+    "text": "Вам письмо, Соколова. Новосёл поёт прежней жиличке, которой всё ещё приходят письма: по ним он знает о ней больше, чем о любом человеке в городе. Адресат песни — женщина, которую он никогда не видел: ",
+    "sim": 0.69,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_9bc29b6e20",
+   "title": "Подходит",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.06,
+   "novelty_embed": 0.309,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_b9dad0c60a",
+    "facet": "full",
+    "text": "Шаги. Человек, не знающий в доме никого в лицо, различает всех соседей по шагам, а его по шагам не различает никто. Убраны зрение и «я»-рассказ: только звуки подъезда (хромает на левую, роняет ключи).",
+    "sim": 0.691,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_4364bd5dad",
+   "title": "Комментаторы",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.05,
+   "novelty_embed": 0.303,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_26512b3e54",
+    "facet": "sentence 4",
+    "text": "Пакет нужен?. Человек пересказывает месяц чеками и единственной фразой кассирши, которая обращена к нему. Куплеты — строки чеков, где набор покупок повторяется и слегка меняется; припев — диалог «паке",
+    "sim": 0.697,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_0b6addcf2c",
+   "title": "Условно съедобные",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.06,
+   "novelty_embed": 0.299,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_11f39da243",
+    "facet": "full",
+    "text": "Люблю оливки. Новичок пользуется тем, что его никто не знает, и за месяц примеряет на себя чужие вкусы и имена. Анонимность подана как привилегия: никто не поймает на вранье, значит, можно «любить» то",
+    "sim": 0.701,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_8f820d20bf",
+   "title": "Ещё тёплое",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.08,
+   "novelty_embed": 0.299,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_94abda5cdc",
+    "facet": "logline",
+    "text": "Здравствуйте (лифт 7:40). Новосёл подгадывает выход из квартиры под лифт соседа с девятого этажа и три утра подряд репетирует приветствие, которое так и не звучит. Действие целиком в кабине лифта и на",
+    "sim": 0.701,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": true,
+   "line_warnings": [
+    {
+     "type": "rhyme",
+     "ref_id": "LY-035",
+     "text": "огонь / ладонь",
+     "line_ends": [
+      "ладон",
+      "ладонь"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c_ef3dc08004",
+   "title": "Мама Бублика",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.08,
+   "novelty_embed": 0.294,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_14a8ef493d",
+    "facet": "full",
+    "text": "Месяц — это много. Ребёнок, которого родители перевезли «на пробу», поздоровался за месяц со всем подъездом. Говорящий — ребёнок со своей арифметикой («месяц — это очень много, а привычка не пришла»).",
+    "sim": 0.706,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_7dbf02c63a",
+   "title": "Хлопайте тише",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.07,
+   "novelty_embed": 0.289,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_b8730d1dd1",
+    "facet": "full",
+    "text": "Вам письмо, Соколова. Новосёл поёт прежней жиличке, которой всё ещё приходят письма: по ним он знает о ней больше, чем о любом человеке в городе. Адресат песни — женщина, которую он никогда не видел: ",
+    "sim": 0.711,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_2a04e7c4c3",
+   "title": "Категория: первый месяц",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.06,
+   "novelty_embed": 0.281,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-051",
+    "facet": "sentence 4",
+    "text": "Снова и снова, по кругу / over and over again",
+    "sim": 0.719
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_4ba62ade2c",
+   "title": "Малярный скотч",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.09,
+   "novelty_embed": 0.279,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_5a00f8c97b",
+    "facet": "core",
+    "text": "Нитка. Новичок тянет по городу страховочную нить от двери до работы и до овощного и ставит на каждом углу стрелку «домой», как делают в пещере. Из пещерного дайвинга взяты прокладка путевой нити и пра",
+    "sim": 0.721,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_18e3309cda",
+   "title": "Тот же кадр",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.07,
+   "novelty_embed": 0.271,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_486e66576a",
+    "facet": "full",
+    "text": "Сам хотел. Человек оправдывается перед воображаемым скептиком: он сам выбрал этот город, и ему нечем крыть, что ему никак. Песня открывается возражением слушателя («сам же хотел») и строится на нём, к",
+    "sim": 0.729,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_35c9dd56d0",
+   "title": "Не бе никого",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.09,
+   "novelty_embed": 0.268,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-024",
+    "facet": "full",
+    "text": "Дневник по неделям, на тридцатый день город становится своим",
+    "sim": 0.732
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_9bea13a23a",
+   "title": "Единственное, что здесь прижилось",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.06,
+   "novelty_embed": 0.266,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_2e1410067d",
+    "facet": "full",
+    "text": "Иждивенец. В графе «иждивенцы» у героя один пункт: базилик в горшке, единственное существо, чья жизнь зависит от того, что он вернётся домой. Налоговый вычет на иждивенца требует, чтобы тот жил с вами",
+    "sim": 0.734,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_416efd4d28",
+   "title": "Хвостики",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.06,
+   "novelty_embed": 0.262,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_bf57be3558",
+    "facet": "core",
+    "text": "Нарезной, пожалуйста. Человек репетирует в прихожей фразы для магазина, чтобы не выдать, что он приезжий. Страх сказать слово не так (I1) становится единственным сюжетом: герой тренирует интонацию зак",
+    "sim": 0.738,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_4890909e59",
+   "title": "Скажи «я дома»",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.07,
+   "novelty_embed": 0.262,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_b9dad0c60a",
+    "facet": "full",
+    "text": "Шаги. Человек, не знающий в доме никого в лицо, различает всех соседей по шагам, а его по шагам не различает никто. Убраны зрение и «я»-рассказ: только звуки подъезда (хромает на левую, роняет ключи).",
+    "sim": 0.738,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_fec13a183a",
+   "title": "Новенький из четырнадцатой",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.07,
+   "novelty_embed": 0.254,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_5dbb16179d",
+    "facet": "full",
+    "text": "Всё рассказал кассирше. Герой выложил случайной кассирше всё про себя, потому что она его не знала, а теперь ему туда идти снова. Анонимность была отдушиной: стороннему человеку можно признаться в чём",
+    "sim": 0.746,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_57e1947cc0",
+   "title": "Опёнок у третьего подъезда",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.07,
+   "novelty_embed": 0.246,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-010",
+    "facet": "sentence 2",
+    "text": "В конце герой кивает случайному прохожему или соседу, и это первая тёплая встреча, после которой город «оттаивает».",
+    "sim": 0.754
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_fcfc28af57",
+   "title": "Мне?",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.06,
+   "novelty_embed": 0.245,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_0f8e403349",
+    "facet": "full",
+    "text": "Чужие реплики. Человек на остановке собирает из подслушанных чужих телефонных разговоров единственные фразы, которые звучат как обращённые к нему. Припев состоит из трёх обрывков от трёх незнакомцев, ",
+    "sim": 0.755,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_317da9df04",
+   "title": "Забег уже мёртвый",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.08,
+   "novelty_embed": 0.245,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_5f3d4c8bea",
+    "facet": "full",
+    "text": "Перенос убытка. Герой не оплакивает скучный месяц, а переносит убыток на будущие периоды, чтобы списать его с первой хорошей субботы. В налоговой логике убыток не пропадает, а ждёт будущей прибыли и в",
+    "sim": 0.755,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_1d2bddba5b",
+   "title": "Раз, раз, проверка",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.06,
+   "novelty_embed": 0.237,
+   "nearest": {
+    "source": "history",
+    "ref_id": "c_0f8e403349",
+    "facet": "full",
+    "text": "Чужие реплики. Человек на остановке собирает из подслушанных чужих телефонных разговоров единственные фразы, которые звучат как обращённые к нему. Припев состоит из трёх обрывков от трёх незнакомцев, ",
+    "sim": 0.763,
+    "run_id": "r_20261008_164251_738a"
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_ffd3613042",
+   "title": "Отбить проездной",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.11,
+   "novelty_embed": 0.234,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-078",
+    "facet": "sentence 1",
+    "text": "Дорога как метафора жизни, ехать без цели / life is a highway, driving with no destination",
+    "sim": 0.766
+   },
+   "soft_flag": true,
+   "line_warnings": [
+    {
+     "type": "line",
+     "line": "Еду трамваем до круга и обратно:",
+     "ref_id": "LY-051",
+     "text": "Снова и снова, по кругу / over and over again",
+     "sim": 0.83
+    }
+   ]
+  }
+ ],
+ "filtered": [
+  {
+   "id": "c_0105f0bd48",
+   "title": "То есть",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.07,
+   "status": "filtered",
+   "reason_code": "cliche_collage",
+   "match": {
+    "source": "bank",
+    "ref_id": "LY-089",
+    "facet": "full",
+    "text": "Песня о том, как трудно написать песню / a song about writer's block",
+    "sim": 0.746
+   },
+   "second_match": {
+    "source": "bank",
+    "ref_id": "LY-090",
+    "facet": "full",
+    "text": "Гимн самопринятия «я такая, какая есть» без конкретики / generic self-love anthem: this is me",
+    "sim": 0.671
+   },
+   "reason": "Cliché collage: LY-089 «Песня о том, как трудно написать песню / a song ab» (cos 0.75) + LY-090 «Гимн самопринятия «я такая, какая есть» без конкре» (cos 0.67); two near-clichés glued together"
+  },
+  {
+   "id": "c_db45e1bd0c",
+   "title": "Подлесок",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.08,
+   "status": "filtered",
+   "reason_code": "duplicate",
+   "match": {
+    "source": "pool",
+    "ref_id": "c_57e1947cc0",
+    "text": "Опёнок у третьего подъезда",
+    "sim": 0.812
+   },
+   "reason": "Duplicate inside the pool of c_57e1947cc0 «Опёнок у третьего подъезда» (cos 0.81 ≥ 0.80)"
+  }
+ ],
+ "near_duplicates": [
+  {
+   "a": "c_e94c57b663",
+   "b": "c_ef3dc08004",
+   "a_title": "Папа Бублика",
+   "b_title": "Мама Бублика",
+   "sim": 0.786
+  },
+  {
+   "a": "c_fec13a183a",
+   "b": "c_e868d1f624",
+   "a_title": "Новенький из четырнадцатой",
+   "b_title": "Сорок первая",
+   "sim": 0.783
+  }
+ ]
+}

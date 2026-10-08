@@ -1,0 +1,22 @@
+references: {'bank': 95, 'baseline': 3, 'history': 3}, counts: {'pool': 17, 'kept': 8, 'filtered': 9, 'by_reason': {'cliche': 3, 'predictable': 2, 'repeat': 2, 'duplicate': 2}, 'soft_flagged': 1, 'line_warnings': 2, 'near_duplicate_pairs': 0}
+
+concept        outcome         ok  match          cos    note
+fresh-1        kept            ✓   BL-003         0.237  
+fresh-2        kept            ✓   LY-089         0.228  
+fresh-3        kept            ✓   LY-089         0.295  
+fresh-4        duplicate       ✗   dup-2          0.671  Duplicate inside the pool of dup-2 «Курьер» (cos 0.67 ≥ 0.55)
+fresh-5        kept            ✓   c_hist000001   0.239  LY-048; LY-029
+cliche-1       kept            ✗   LY-001         0.364  
+cliche-2       soft            ✓   LY-065         0.516  
+cliche-3       cliche          ✓   LY-066         0.749  Its core is too close to cliché LY-066: «Пьяный звонок бывшему в три часа ночи / drunk dia
+cliche-4       cliche          ✓   LY-009         0.735  Its core is too close to cliché LY-009: «Восстать из пепла как феникс / rising from the as
+cliche-5       cliche          ✓   LY-073         0.655  Its logline is too close to cliché LY-073: «Маленький город и мечта уехать в большой / sma
+collage-1      kept            ✗   LY-002         0.371  
+predictable-1  predictable     ✓   BL-001         0.581  Its full is too close to a predictable answer to this brief: «Одинокий человек в толпе мег
+predictable-2  predictable     ✓   BL-002         0.631  Its sentence 1 is too close to a predictable answer to this brief: «Song about scrolling s
+repeat-1       repeat          ✓   c_hist000001   0.708  Its full is too close to earlier concept c_hist000001 (run r_hist): «Машина подана. Диспет
+repeat-2       repeat          ✓   c_hist000002   0.585  Its full is too close to earlier concept c_hist000002 (run r_hist): «Terms of Service. A l
+dup-1          duplicate       ✓   fresh-1        0.743  Duplicate inside the pool of fresh-1 «Ключница» (cos 0.74 ≥ 0.55)
+dup-2          kept            ✓   LY-012         0.157  
+
+14/17 outcomes acceptable (see 'accept' in tests/fixtures/novelty_pool.json)

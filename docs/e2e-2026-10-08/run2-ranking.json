@@ -1,0 +1,333 @@
+{
+  "ranked": [
+    {
+      "id": "c_4ba62ade2c",
+      "title": "Малярный скотч",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.6983,
+      "winrate": 1.0,
+      "final": 0.8492,
+      "in_tournament": true
+    },
+    {
+      "id": "c_e94c57b663",
+      "title": "Папа Бублика",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.7475,
+      "winrate": 0.8,
+      "final": 0.7738,
+      "in_tournament": true
+    },
+    {
+      "id": "c_3f86ed11fd",
+      "title": "Игорь",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.7179,
+      "winrate": 0.6,
+      "final": 0.6589,
+      "in_tournament": true
+    },
+    {
+      "id": "c_416efd4d28",
+      "title": "Хвостики",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.6311,
+      "winrate": 0.4,
+      "final": 0.5155,
+      "in_tournament": true,
+      "cut_reason": "tournament win rate 0.4, final 0.5155"
+    },
+    {
+      "id": "c_e6b9038078",
+      "title": "Памятка новому знакомому",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.6155,
+      "winrate": 0.2,
+      "final": 0.4078,
+      "in_tournament": true,
+      "cut_reason": "tournament win rate 0.2, final 0.4078"
+    },
+    {
+      "id": "c_8f820d20bf",
+      "title": "Ещё тёплое",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.6123,
+      "winrate": 0.0,
+      "final": 0.3061,
+      "in_tournament": true,
+      "cut_reason": "tournament win rate 0.0, final 0.3061"
+    },
+    {
+      "id": "c_7dbf02c63a",
+      "title": "Хлопайте тише",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.61,
+      "winrate": null,
+      "final": 0.61,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.61 below the tournament cut"
+    },
+    {
+      "id": "c_52d73eebc0",
+      "title": "Экскурсия для одного",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.6035,
+      "winrate": null,
+      "final": 0.6035,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.6035 below the tournament cut"
+    },
+    {
+      "id": "c_bb9f6887cc",
+      "title": "Излишек отдайте соседям",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.5836,
+      "winrate": null,
+      "final": 0.5836,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5836 below the tournament cut"
+    },
+    {
+      "id": "c_18e3309cda",
+      "title": "Тот же кадр",
+      "branch": "D",
+      "strategy": "outsider-blend",
+      "rubric": 0.5682,
+      "winrate": null,
+      "final": 0.5682,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5682 below the tournament cut"
+    },
+    {
+      "id": "c_0b6addcf2c",
+      "title": "Условно съедобные",
+      "branch": "D",
+      "strategy": "outsider-blend",
+      "rubric": 0.5673,
+      "winrate": null,
+      "final": 0.5673,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5673 below the tournament cut"
+    },
+    {
+      "id": "c_733c95a211",
+      "title": "Неудобно хорошо",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.5499,
+      "winrate": null,
+      "final": 0.5499,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5499 below the tournament cut"
+    },
+    {
+      "id": "c_ffd3613042",
+      "title": "Отбить проездной",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.542,
+      "winrate": null,
+      "final": 0.542,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.542 below the tournament cut"
+    },
+    {
+      "id": "c_a26f163285",
+      "title": "Давно",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.5305,
+      "winrate": null,
+      "final": 0.5305,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5305 below the tournament cut"
+    },
+    {
+      "id": "c_9bc29b6e20",
+      "title": "Подходит",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.5296,
+      "winrate": null,
+      "final": 0.5296,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5296 below the tournament cut"
+    },
+    {
+      "id": "c_2a04e7c4c3",
+      "title": "Категория: первый месяц",
+      "branch": "D",
+      "strategy": "outsider-blend",
+      "rubric": 0.5249,
+      "winrate": null,
+      "final": 0.5249,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5249 below the tournament cut"
+    },
+    {
+      "id": "c_e868d1f624",
+      "title": "Сорок первая",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.5125,
+      "winrate": null,
+      "final": 0.5125,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5125 below the tournament cut"
+    },
+    {
+      "id": "c_b8241bb8eb",
+      "title": "Добавить в словарь",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.5105,
+      "winrate": null,
+      "final": 0.5105,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5105 below the tournament cut"
+    },
+    {
+      "id": "c_9bea13a23a",
+      "title": "Единственное, что здесь прижилось",
+      "branch": "D",
+      "strategy": "outsider-blend",
+      "rubric": 0.4974,
+      "winrate": null,
+      "final": 0.4974,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.4974 below the tournament cut"
+    },
+    {
+      "id": "c_8e38ac96c5",
+      "title": "Третий слева",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.4932,
+      "winrate": null,
+      "final": 0.4932,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.4932 below the tournament cut"
+    },
+    {
+      "id": "c_317da9df04",
+      "title": "Забег уже мёртвый",
+      "branch": "D",
+      "strategy": "outsider-blend",
+      "rubric": 0.4738,
+      "winrate": null,
+      "final": 0.4738,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.4738 below the tournament cut"
+    },
+    {
+      "id": "c_1d2bddba5b",
+      "title": "Раз, раз, проверка",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.4725,
+      "winrate": null,
+      "final": 0.4725,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.4725 below the tournament cut"
+    },
+    {
+      "id": "c_fcfc28af57",
+      "title": "Мне?",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.4345,
+      "winrate": null,
+      "final": 0.4345,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.4345 below the tournament cut"
+    },
+    {
+      "id": "c_8612f49a88",
+      "title": "Три звонка",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.4291,
+      "winrate": null,
+      "final": 0.4291,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.4291 below the tournament cut"
+    },
+    {
+      "id": "c_35c9dd56d0",
+      "title": "Не бе никого",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.3933,
+      "winrate": null,
+      "final": 0.3933,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.3933 below the tournament cut"
+    },
+    {
+      "id": "c_4890909e59",
+      "title": "Скажи «я дома»",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.3923,
+      "winrate": null,
+      "final": 0.3923,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.3923 below the tournament cut"
+    },
+    {
+      "id": "c_57e1947cc0",
+      "title": "Опёнок у третьего подъезда",
+      "branch": "D",
+      "strategy": "outsider-blend",
+      "rubric": 0.3703,
+      "winrate": null,
+      "final": 0.3703,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.3703 below the tournament cut"
+    }
+  ],
+  "finalists": [
+    {
+      "label": "F1",
+      "id": "c_4ba62ade2c",
+      "title": "Малярный скотч",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.6983,
+      "winrate": 1.0,
+      "final": 0.8492,
+      "in_tournament": true
+    },
+    {
+      "label": "F2",
+      "id": "c_e94c57b663",
+      "title": "Папа Бублика",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.7475,
+      "winrate": 0.8,
+      "final": 0.7738,
+      "in_tournament": true
+    },
+    {
+      "label": "F3",
+      "id": "c_3f86ed11fd",
+      "title": "Игорь",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.7179,
+      "winrate": 0.6,
+      "final": 0.6589,
+      "in_tournament": true
+    }
+  ]
+}

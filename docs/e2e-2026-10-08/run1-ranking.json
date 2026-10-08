@@ -1,0 +1,300 @@
+{
+  "ranked": [
+    {
+      "id": "c_b9dad0c60a",
+      "title": "Шаги",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.7055,
+      "winrate": 1.0,
+      "final": 0.8528,
+      "in_tournament": true
+    },
+    {
+      "id": "c_07636fd652",
+      "title": "Вас знают: ноль",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.7029,
+      "winrate": 0.8,
+      "final": 0.7514,
+      "in_tournament": true
+    },
+    {
+      "id": "c_26512b3e54",
+      "title": "Пакет нужен?",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.6877,
+      "winrate": 0.6,
+      "final": 0.6439,
+      "in_tournament": true
+    },
+    {
+      "id": "c_11f39da243",
+      "title": "Люблю оливки",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.736,
+      "winrate": 0.4,
+      "final": 0.568,
+      "in_tournament": true,
+      "cut_reason": "tournament win rate 0.4, final 0.568"
+    },
+    {
+      "id": "c_0ae4fa665f",
+      "title": "Мне бы потоп",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.7096,
+      "winrate": 0.2,
+      "final": 0.4548,
+      "in_tournament": true,
+      "cut_reason": "tournament win rate 0.2, final 0.4548"
+    },
+    {
+      "id": "c_5dbb16179d",
+      "title": "Всё рассказал кассирше",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.6371,
+      "winrate": 0.0,
+      "final": 0.3185,
+      "in_tournament": true,
+      "cut_reason": "tournament win rate 0.0, final 0.3185"
+    },
+    {
+      "id": "c_399b9094d9",
+      "title": "Подтверждающие документы",
+      "branch": "D",
+      "strategy": "outsider-blend",
+      "rubric": 0.6344,
+      "winrate": null,
+      "final": 0.6344,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.6344 below the tournament cut"
+    },
+    {
+      "id": "c_4045156730",
+      "title": "Стирка, хлопок, сорок",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.6253,
+      "winrate": null,
+      "final": 0.6253,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.6253 below the tournament cut"
+    },
+    {
+      "id": "c_b8730d1dd1",
+      "title": "Вам письмо, Соколова",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.6084,
+      "winrate": null,
+      "final": 0.6084,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.6084 below the tournament cut"
+    },
+    {
+      "id": "c_21f4074662",
+      "title": "Отбой",
+      "branch": "D",
+      "strategy": "outsider-blend",
+      "rubric": 0.5735,
+      "winrate": null,
+      "final": 0.5735,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5735 below the tournament cut"
+    },
+    {
+      "id": "c_ef30fb43e7",
+      "title": "Контактное лицо",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.5611,
+      "winrate": null,
+      "final": 0.5611,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5611 below the tournament cut"
+    },
+    {
+      "id": "c_5f3d4c8bea",
+      "title": "Перенос убытка",
+      "branch": "D",
+      "strategy": "outsider-blend",
+      "rubric": 0.5503,
+      "winrate": null,
+      "final": 0.5503,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5503 below the tournament cut"
+    },
+    {
+      "id": "c_5a00f8c97b",
+      "title": "Нитка",
+      "branch": "D",
+      "strategy": "outsider-blend",
+      "rubric": 0.5498,
+      "winrate": null,
+      "final": 0.5498,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5498 below the tournament cut"
+    },
+    {
+      "id": "c_8b2da74c8a",
+      "title": "Тот, кто на поверхности",
+      "branch": "D",
+      "strategy": "outsider-blend",
+      "rubric": 0.5489,
+      "winrate": null,
+      "final": 0.5489,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5489 below the tournament cut"
+    },
+    {
+      "id": "c_985e38185c",
+      "title": "Четырнадцатый до «Конечной»",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.5428,
+      "winrate": null,
+      "final": 0.5428,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5428 below the tournament cut"
+    },
+    {
+      "id": "c_e2c94478db",
+      "title": "Тот, кто остался",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.5389,
+      "winrate": null,
+      "final": 0.5389,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5389 below the tournament cut"
+    },
+    {
+      "id": "c_ecfa377790",
+      "title": "Будильники",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.531,
+      "winrate": null,
+      "final": 0.531,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.531 below the tournament cut"
+    },
+    {
+      "id": "c_a44b7833f0",
+      "title": "Резерв",
+      "branch": "D",
+      "strategy": "outsider-blend",
+      "rubric": 0.5043,
+      "winrate": null,
+      "final": 0.5043,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.5043 below the tournament cut"
+    },
+    {
+      "id": "c_928ed20c5f",
+      "title": "Местные слова",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.4894,
+      "winrate": null,
+      "final": 0.4894,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.4894 below the tournament cut"
+    },
+    {
+      "id": "c_486e66576a",
+      "title": "Сам хотел",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.4703,
+      "winrate": null,
+      "final": 0.4703,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.4703 below the tournament cut"
+    },
+    {
+      "id": "c_94abda5cdc",
+      "title": "Здравствуйте (лифт 7:40)",
+      "branch": "B",
+      "strategy": "disruption",
+      "rubric": 0.4481,
+      "winrate": null,
+      "final": 0.4481,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.4481 below the tournament cut"
+    },
+    {
+      "id": "c_4ce00e77b3",
+      "title": "Четвёртая остановка",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.4216,
+      "winrate": null,
+      "final": 0.4216,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.4216 below the tournament cut"
+    },
+    {
+      "id": "c_3074e76238",
+      "title": "Муть",
+      "branch": "D",
+      "strategy": "outsider-blend",
+      "rubric": 0.4203,
+      "winrate": null,
+      "final": 0.4203,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.4203 below the tournament cut"
+    },
+    {
+      "id": "c_14a8ef493d",
+      "title": "Месяц — это много",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.4087,
+      "winrate": null,
+      "final": 0.4087,
+      "in_tournament": false,
+      "cut_reason": "rubric 0.4087 below the tournament cut"
+    }
+  ],
+  "finalists": [
+    {
+      "label": "F1",
+      "id": "c_b9dad0c60a",
+      "title": "Шаги",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.7055,
+      "winrate": 1.0,
+      "final": 0.8528,
+      "in_tournament": true
+    },
+    {
+      "label": "F2",
+      "id": "c_07636fd652",
+      "title": "Вас знают: ноль",
+      "branch": "C",
+      "strategy": "counter-trend",
+      "rubric": 0.7029,
+      "winrate": 0.8,
+      "final": 0.7514,
+      "in_tournament": true
+    },
+    {
+      "label": "F3",
+      "id": "c_26512b3e54",
+      "title": "Пакет нужен?",
+      "branch": "A",
+      "strategy": "structural",
+      "rubric": 0.6877,
+      "winrate": 0.6,
+      "final": 0.6439,
+      "in_tournament": true
+    }
+  ]
+}

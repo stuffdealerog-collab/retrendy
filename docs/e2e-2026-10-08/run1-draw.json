@@ -1,0 +1,121 @@
+{
+  "seed": 745396901,
+  "branches": [
+    {
+      "id": "A",
+      "agent": "creative-studio:diverger",
+      "strategy": "structural",
+      "label": "Structural transformation (SCAMPER + TRIZ)",
+      "cards": [
+        {
+          "deck": "scamper",
+          "id": "SC3",
+          "title": "Adapt",
+          "text": "- Borrow the structure of a genre from another field (sports commentary, safety briefing, auction, weather forecast) and fill it with the brief's content.\n- Adapt a solution nature uses for the same problem (camouflage, migration, molting).\n- Adapt how a child, a machine or a foreigner would misunderstand the situation, and make the misunderstanding the point."
+        },
+        {
+          "deck": "scamper",
+          "id": "SC6",
+          "title": "Eliminate",
+          "text": "- Remove the element everyone considers essential (the hero, the product shot, the chorus, the word \"love\") and build around the hole.\n- Remove all but one sense (only sounds, only smells).\n- Cut the explanation: start after the event, end before the resolution."
+        },
+        {
+          "deck": "triz-40",
+          "id": "T09",
+          "title": "Pre-empt the objection (Preliminary anti-action)",
+          "text": "Open with the audience's strongest objection or cynicism and build on top of it, instead of hoping they won't think it."
+        },
+        {
+          "deck": "triz-40",
+          "id": "T01",
+          "title": "Split it (Segmentation)",
+          "text": "Break the piece, the hero or the message into independent parts that work alone and add up differently (a story told in separate receipts; a hook made of three overheard fragments)."
+        },
+        {
+          "deck": "triz-40",
+          "id": "T03",
+          "title": "Make one part different (Local quality)",
+          "text": "Give one part of a uniform structure a different rule: one verse in another tense, one frame in colour, one line spoken by someone else."
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "agent": "creative-studio:diverger",
+      "strategy": "disruption",
+      "label": "Disruption under constraint (oblique prompts + constraints)",
+      "cards": [
+        {
+          "deck": "oblique-strategies",
+          "id": "O19",
+          "title": "What does the audience do at 7 a.m.?",
+          "text": "Ignore the topic; observe the audience's most routine moment, then connect it back."
+        },
+        {
+          "deck": "oblique-strategies",
+          "id": "O07",
+          "title": "Last line first",
+          "text": "Write the final moment first and refuse to explain how we got there."
+        },
+        {
+          "deck": "oblique-strategies",
+          "id": "O27",
+          "title": "Withhold the payoff",
+          "text": "Promise something and deliberately never deliver it; make the absence the payoff."
+        },
+        {
+          "deck": "constraints",
+          "id": "K01",
+          "title": "One room",
+          "text": "Everything happens in one small, specific room. No flashbacks outside it."
+        },
+        {
+          "deck": "constraints",
+          "id": "K30",
+          "title": "Borrowed rhythm",
+          "text": "The rhythm or structure is copied from a non-artistic sequence (a phone number, a countdown, a bus route, a recipe's steps)."
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "agent": "creative-studio:diverger",
+      "strategy": "counter-trend",
+      "label": "Counter-trend and white space, tail-only verbalized sampling",
+      "cards": [
+        {
+          "deck": "triz-40",
+          "id": "T22",
+          "title": "Turn harm into benefit (Blessing in disguise)",
+          "text": "Take the brief's biggest negative (the product's flaw, the audience's bad habit, the topic's taboo) and make it the hook."
+        },
+        {
+          "deck": "oblique-strategies",
+          "id": "O25",
+          "title": "Make one thing impossible",
+          "text": "Allow exactly one impossible element and keep everything else painfully realistic."
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "agent": "creative-studio:outsider",
+      "strategy": "outsider-blend",
+      "label": "Outsider: conceptual blending with a foreign domain",
+      "cards": [
+        {
+          "deck": "foreign-domains",
+          "id": "F42",
+          "title": "Cave diving",
+          "text": "Line laying, the rule of thirds for air, silt-out (zero visibility), the restriction, always know the way back."
+        },
+        {
+          "deck": "foreign-domains",
+          "id": "F26",
+          "title": "Tax filing",
+          "text": "Deadlines, deductions, receipts kept in a shoebox, the audit lottery, amended returns, dependants, carry-forward of losses."
+        }
+      ]
+    }
+  ]
+}

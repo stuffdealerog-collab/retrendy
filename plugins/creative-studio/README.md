@@ -43,8 +43,10 @@
      ─► ответ ─► ```cs:selection``` ─► хук Stop: статусы в логе + запись в taste-profile
 ```
 
-Типичный прогон: около 32 концептов на входе, 3 финалиста × 3 версии на
-выходе, 10 сабагентов. Время 15–30 минут в зависимости от модели и сети.
+Типичный прогон: 32 концепта на входе, 3 финалиста × 3 версии на выходе,
+11 сабагентов. В проверочных прогонах это заняло 8–10 минут и $2.0–2.6 по
+данным CLI. Отчёты, логи и сравнение двух прогонов лежат в
+[`docs/e2e-2026-10-08/`](../../docs/e2e-2026-10-08/README.md).
 
 ## Состав
 
@@ -105,7 +107,8 @@ claude plugin list                                        # creative-studio@retr
 
 ```bash
 claude plugin validate plugins/creative-studio --strict
-python3 -m unittest discover -s plugins/creative-studio/tests -v
+python3 -m unittest discover -s plugins/creative-studio/tests -v     # 17 тестов; семантический нужен fastembed
+python3 plugins/creative-studio/tests/novelty_demo.py                # фильтр на фикстурах: ожидание и факт
 ```
 
 ## Переменные окружения
@@ -159,8 +162,12 @@ Headless: `claude -p "/creative-studio:create <бриф>"`, а выбор сле
 Другие skills: `/creative-studio:trend-radar <тема>`, `/creative-studio:insight`,
 `/creative-studio:diverge <идея>` (быстрые хвостовые вариации без пайплайна),
 `/creative-studio:critique`, `/creative-studio:converge`,
-`/creative-studio:brand-memory`. Если имя не занято другим плагином, работает и
-короткий вызов `/create`.
+`/creative-studio:brand-memory`.
+
+Короткое `/create` не зарегистрировано как команда: Claude Code показывает
+плагинные skills с префиксом. Но модель узнаёт такой запрос по описанию skill
+и сама вызывает `creative-studio:create`. Проверено на
+`/brand-memory status`, в headless-режиме тоже.
 
 ## Где лежат данные
 

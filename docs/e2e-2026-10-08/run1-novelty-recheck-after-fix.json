@@ -1,0 +1,600 @@
+{
+ "run_id": null,
+ "domain": "lyrics",
+ "domain_pack": "full",
+ "backend": "fastembed",
+ "model": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+ "degraded": false,
+ "thresholds": {
+  "hard": 0.8,
+  "soft": 0.7,
+  "pool_duplicate": 0.8,
+  "line": 0.8,
+  "collage_second": 0.62,
+  "near_duplicate": 0.75
+ },
+ "references": {
+  "bank": 95,
+  "baseline": 36,
+  "history": 0
+ },
+ "counts": {
+  "pool": 32,
+  "kept": 32,
+  "filtered": 0,
+  "by_reason": {},
+  "soft_flagged": 2,
+  "line_warnings": 0,
+  "near_duplicate_pairs": 3
+ },
+ "kept": [
+  {
+   "id": "c_8b2da74c8a",
+   "title": "Тот, кто на поверхности",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.05,
+   "novelty_embed": 0.43,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-026",
+    "facet": "full",
+    "text": "Потерян в лабиринте, ищу выход / lost in a maze, looking for a way out",
+    "sim": 0.57
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_399b9094d9",
+   "title": "Подтверждающие документы",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.06,
+   "novelty_embed": 0.43,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-027",
+    "facet": "sentence 3",
+    "text": "Припев-признание «я в чужом городе, меня тут никто не знает»",
+    "sim": 0.57
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_ef30fb43e7",
+   "title": "Контактное лицо",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.1,
+   "novelty_embed": 0.42,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-093",
+    "facet": "logline",
+    "text": "Ода родному городу через перечисление названий улиц / ode to my hometown by listing street names",
+    "sim": 0.58
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_11f39da243",
+   "title": "Люблю оливки",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.07,
+   "novelty_embed": 0.417,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-014",
+    "facet": "sentence 2",
+    "text": "Герой заблудился без навигатора, спросил дорогу у прохожего, и эта короткая встреча стала первым теплом.",
+    "sim": 0.583
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_14a8ef493d",
+   "title": "Месяц — это много",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.07,
+   "novelty_embed": 0.411,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-025",
+    "facet": "core",
+    "text": "Счёт недель с переезда и маленькое тепло к четвёртой: первый знакомый",
+    "sim": 0.589
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_12fd70a23d",
+   "title": "Особь обыкновенная",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.07,
+   "novelty_embed": 0.399,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-032",
+    "facet": "sentence 2",
+    "text": "Звонок маме или друзьям: «всё хорошо», хотя одиноко",
+    "sim": 0.601
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_985e38185c",
+   "title": "Четырнадцатый до «Конечной»",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.09,
+   "novelty_embed": 0.387,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-015",
+    "facet": "core",
+    "text": "Ночной автобус или последний трамвай, пустой салон и мысли о том, правильно ли он сделал, что уехал.",
+    "sim": 0.613
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_07636fd652",
+   "title": "Вас знают: ноль",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.05,
+   "novelty_embed": 0.382,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-019",
+    "facet": "sentence 3",
+    "text": "Бридж с тишиной и шёпотом: «А вдруг я не справлюсь?», потом финальный припев с надеждой.",
+    "sim": 0.618
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_0ae4fa665f",
+   "title": "Мне бы потоп",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.08,
+   "novelty_embed": 0.379,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-084",
+    "facet": "full",
+    "text": "Финальный твист: всё это было сном / twist ending: it was all a dream",
+    "sim": 0.621
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_7bb8152f7d",
+   "title": "Перчатка",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.07,
+   "novelty_embed": 0.377,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-014",
+    "facet": "full",
+    "text": "Герой заблудился без навигатора, спросил дорогу у прохожего, и эта короткая встреча стала первым теплом.",
+    "sim": 0.623
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_bf57be3558",
+   "title": "Нарезной, пожалуйста",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.06,
+   "novelty_embed": 0.376,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-051",
+    "facet": "sentence 2",
+    "text": "Снова и снова, по кругу / over and over again",
+    "sim": 0.624
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_e2c94478db",
+   "title": "Тот, кто остался",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.06,
+   "novelty_embed": 0.364,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-068",
+    "facet": "core",
+    "text": "Случайная встреча бывших спустя годы / running into the ex years later",
+    "sim": 0.636
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_26512b3e54",
+   "title": "Пакет нужен?",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.08,
+   "novelty_embed": 0.364,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-090",
+    "facet": "sentence 4",
+    "text": "Гимн самопринятия «я такая, какая есть» без конкретики / generic self-love anthem: this is me",
+    "sim": 0.636
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_b8730d1dd1",
+   "title": "Вам письмо, Соколова",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.06,
+   "novelty_embed": 0.361,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-067",
+    "facet": "full",
+    "text": "Неотправленное письмо или сообщение бывшему / the letter or text I never sent",
+    "sim": 0.639
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_f067bdef6a",
+   "title": "Вас как зовут?",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.09,
+   "novelty_embed": 0.356,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-023",
+    "facet": "sentence 4",
+    "text": "Припев-признание «я здесь никого не знаю» с вокализами",
+    "sim": 0.644
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_b9dad0c60a",
+   "title": "Шаги",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.06,
+   "novelty_embed": 0.355,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-020",
+    "facet": "full",
+    "text": "Финал: к концу месяца у героя появляется первый знакомый, сосед, или кто-то машет ему из окна, и одиночество отступает.",
+    "sim": 0.645
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_9287283ee9",
+   "title": "Контактное лицо",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.08,
+   "novelty_embed": 0.348,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-007",
+    "facet": "sentence 4",
+    "text": "Тонуть в твоих глазах, океан чувств / drowning in your eyes, an ocean of love",
+    "sim": 0.652
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_94abda5cdc",
+   "title": "Здравствуйте (лифт 7:40)",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.1,
+   "novelty_embed": 0.347,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-020",
+    "facet": "sentence 4",
+    "text": "Финал: к концу месяца у героя появляется первый знакомый, сосед, или кто-то машет ему из окна, и одиночество отступает.",
+    "sim": 0.653
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_5f3d4c8bea",
+   "title": "Перенос убытка",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.05,
+   "novelty_embed": 0.346,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-011",
+    "facet": "core",
+    "text": "Герой считает дни с переезда: первая неделя, вторая, третья, четвёртая, и к четвёртой что-то меняется.",
+    "sim": 0.654
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_5dbb16179d",
+   "title": "Всё рассказал кассирше",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.07,
+   "novelty_embed": 0.331,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-014",
+    "facet": "full",
+    "text": "Герой заблудился без навигатора, спросил дорогу у прохожего, и эта короткая встреча стала первым теплом.",
+    "sim": 0.669
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_21f4074662",
+   "title": "Отбой",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.07,
+   "novelty_embed": 0.33,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-090",
+    "facet": "sentence 4",
+    "text": "Гимн самопринятия «я такая, какая есть» без конкретики / generic self-love anthem: this is me",
+    "sim": 0.67
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_2e1410067d",
+   "title": "Иждивенец",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.08,
+   "novelty_embed": 0.329,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-034",
+    "facet": "core",
+    "text": "Герой ночью бродит по незнакомому городу, чужие окна, одиночество среди тысяч",
+    "sim": 0.671
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_3074e76238",
+   "title": "Муть",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.05,
+   "novelty_embed": 0.328,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-017",
+    "facet": "sentence 3",
+    "text": "Герой говорит сам с собой или с городом: «Здравствуй, город, давай знакомиться».",
+    "sim": 0.672
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_4ce00e77b3",
+   "title": "Четвёртая остановка",
+   "branch": "C",
+   "strategy": "counter-trend",
+   "p": 0.09,
+   "novelty_embed": 0.317,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-033",
+    "facet": "full",
+    "text": "Арка по неделям: первая, вторая, третья, четвёртая, и к концу месяца город становится своим",
+    "sim": 0.683
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_ecfa377790",
+   "title": "Будильники",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.12,
+   "novelty_embed": 0.317,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-090",
+    "facet": "sentence 4",
+    "text": "Гимн самопринятия «я такая, какая есть» без конкретики / generic self-love anthem: this is me",
+    "sim": 0.683
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_5a00f8c97b",
+   "title": "Нитка",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.06,
+   "novelty_embed": 0.31,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-033",
+    "facet": "sentence 4",
+    "text": "Арка по неделям: первая, вторая, третья, четвёртая, и к концу месяца город становится своим",
+    "sim": 0.69
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_486e66576a",
+   "title": "Сам хотел",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.1,
+   "novelty_embed": 0.309,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-012",
+    "facet": "full",
+    "text": "Песня о мечте: он приехал покорять большой город с одним чемоданом, и всё получится.",
+    "sim": 0.691
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_0f8e403349",
+   "title": "Чужие реплики",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.06,
+   "novelty_embed": 0.308,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-066",
+    "facet": "full",
+    "text": "Пьяный звонок бывшему в три часа ночи / drunk dialling the ex at 3 a.m.",
+    "sim": 0.692
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_a44b7833f0",
+   "title": "Резерв",
+   "branch": "D",
+   "strategy": "outsider-blend",
+   "p": 0.05,
+   "novelty_embed": 0.307,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-001",
+    "facet": "sentence 2",
+    "text": "Герой бродит ночью по незнакомому городу, в окнах чужой свет, и он чувствует себя одиноким среди тысяч людей.",
+    "sim": 0.693
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_928ed20c5f",
+   "title": "Местные слова",
+   "branch": "A",
+   "strategy": "structural",
+   "p": 0.09,
+   "novelty_embed": 0.304,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-002",
+    "facet": "full",
+    "text": "Припев-признание: «Я в чужом городе, здесь меня никто не знает», повторённое как хук.",
+    "sim": 0.696
+   },
+   "soft_flag": false,
+   "line_warnings": []
+  },
+  {
+   "id": "c_87b12866d1",
+   "title": "Повторить?",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.07,
+   "novelty_embed": 0.287,
+   "nearest": {
+    "source": "bank",
+    "ref_id": "LY-051",
+    "facet": "sentence 3",
+    "text": "Снова и снова, по кругу / over and over again",
+    "sim": 0.713
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  },
+  {
+   "id": "c_4045156730",
+   "title": "Стирка, хлопок, сорок",
+   "branch": "B",
+   "strategy": "disruption",
+   "p": 0.08,
+   "novelty_embed": 0.261,
+   "nearest": {
+    "source": "baseline",
+    "ref_id": "BL-005",
+    "facet": "sentence 1",
+    "text": "Съёмная квартира с голыми стенами, коробки неразобранные, эхо в пустой комнате как образ одиночества.",
+    "sim": 0.739
+   },
+   "soft_flag": true,
+   "line_warnings": []
+  }
+ ],
+ "filtered": [],
+ "near_duplicates": [
+  {
+   "a": "c_9287283ee9",
+   "b": "c_ef30fb43e7",
+   "a_title": "Контактное лицо",
+   "b_title": "Контактное лицо",
+   "sim": 0.769
+  },
+  {
+   "a": "c_8b2da74c8a",
+   "b": "c_21f4074662",
+   "a_title": "Тот, кто на поверхности",
+   "b_title": "Отбой",
+   "sim": 0.753
+  },
+  {
+   "a": "c_399b9094d9",
+   "b": "c_26512b3e54",
+   "a_title": "Подтверждающие документы",
+   "b_title": "Пакет нужен?",
+   "sim": 0.751
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+run1 r_20261008_164251_738a: pool 32, filtered {'cliche_collage': 4}
+run2 r_20261008_165203_8fd5: pool 32, filtered {'cliche_collage': 1, 'duplicate': 1}, history refs 32
+exact title overlap: 0
+run2 concept -> nearest run1 concept similarity: {'>=0.80': 0, '0.70-0.80': 12, '0.60-0.70': 20, '<0.60': 0}
+top 5 closest pairs (run2 <- run1):
+  0.763  «Раз, раз, проверка»  <-  «Чужие реплики»
+  0.755  «Мне?»  <-  «Чужие реплики»
+  0.753  «Забег уже мёртвый»  <-  «Резерв»
+  0.746  «Новенький из четырнадцатой»  <-  «Всё рассказал кассирше»
+  0.738  «Хвостики»  <-  «Нарезной, пожалуйста»
+finalists run1: ['Шаги', 'Вас знают: ноль', 'Пакет нужен?']
+finalists run2: ['Малярный скотч', 'Папа Бублика', 'Игорь']
+max finalist-to-finalist similarity: 0.608
+run2 concepts filtered as repeats of run1: 0

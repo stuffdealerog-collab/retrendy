@@ -205,6 +205,9 @@ def cmd_context(args) -> None:
     md += [f"- {x}" for x in baseline] or ["- (none yet)"]
     if pack["files"].get("cliche-bank"):
         md += [f"- …and every entry of {pack['files']['cliche-bank']}"]
+    local_bank = home / "cliche-bank" / f"{pack['slug']}.md"
+    if local_bank.exists():
+        md += [f"- …and every entry of {local_bank} (added by the user)"]
     md += ["", "## Already generated in earlier runs: do NOT repeat or paraphrase"]
     md += digest or ["- (nothing yet: this is the first run in this domain)"]
     path = rdir / "context.md"
