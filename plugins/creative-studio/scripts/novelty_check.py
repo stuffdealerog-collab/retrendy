@@ -352,7 +352,7 @@ def check(pool: list[dict], refs: dict[str, list[dict]], backend, thr: dict, lin
         # Same idea or just the same brief? Embeddings can't tell in this band; cliche-hunter decides.
         near = [{"a": kept[i]["id"], "b": kept[j]["id"], "a_title": kept[i]["title"], "b_title": kept[j]["title"],
                  "sim": round(sims[i][j], 3)}
-                for x, i in enumerate(survivors) for j in survivors[x + 1:] if thr["near_duplicate"] <= sims[i][j] < thr["pool_duplicate"]][:12]
+                for x, i in enumerate(survivors) for j in survivors[x + 1:] if thr["near_duplicate"] <= sims[i][j] < thr["pool_duplicate"]]
         similarity = {"ids": [kept[i]["id"] for i in survivors],
                       "matrix": [[round(sims[i][j], 3) for j in survivors] for i in survivors]}
         kept = [kept[i] for i in survivors]
@@ -375,7 +375,7 @@ def check(pool: list[dict], refs: dict[str, list[dict]], backend, thr: dict, lin
         k["line_warnings"] = warnings
         del k["_concept"]
     kept.sort(key=lambda k: -k["novelty_embed"])
-    return {"kept": kept, "filtered": filtered, "near_duplicates": sorted(near, key=lambda n: -n["sim"]),
+    return {"kept": kept, "filtered": filtered, "near_duplicates": sorted(near, key=lambda n: -n["sim"])[:12],
             "similarity": similarity}
 
 

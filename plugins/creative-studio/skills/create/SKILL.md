@@ -28,9 +28,12 @@ The `cstudio` command is on PATH (plugin `bin/`). Every `cstudio` command prints
    agent forgot the block), store it yourself with
    `cstudio log ingest --run <id> --agent <agent-name> <<'CS'` followed by the
    agent's full answer and a closing `CS` line.
-3. **Spawn parallel agents in ONE message**, foreground (do not background
-   them), and pass each one the run id and run dir. Agent types are
-   plugin-scoped: `creative-studio:<name>`.
+3. **Spawn parallel agents in ONE message** and pass each one the run id and
+   run dir. Prefer foreground (`run_in_background: false` where the Agent tool
+   has that option) so results come back together; if your Agent tool only
+   runs them in the background, wait until every agent of the stage has
+   reported before the next `cstudio` step. Agent types are plugin-scoped:
+   `creative-studio:<name>`.
 4. **Neutral mode.** If `init` reports `"mode": "neutral"`, there is no brand
    and no taste profile: do not invent a brand voice, persona, audience taste or
    "house style". Judge only against the brief.

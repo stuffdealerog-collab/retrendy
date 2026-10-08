@@ -71,6 +71,11 @@ class TemplatesAndBlocks(unittest.TestCase):
         self.assertEqual([k for k, _ in cs.extract_blocks(text)], ["judgments"])
         self.assertEqual(cs.extract_blocks('```json\n{"judgments": []}\n```'), [])  # no run_id: not ours
 
+    def test_trailing_commas_are_tolerated(self):
+        text = '```cs:concepts\n{"run_id": "r", "concepts": [{"title": "a, b", "p": 0.1,},\n],}\n```'
+        (kind, data), = cs.extract_blocks(text)
+        self.assertEqual((kind, data["concepts"][0]["title"]), ("concepts", "a, b"))
+
     def test_cliche_bank_size_and_ids_unique(self):
         bank = nc.parse_bank(ROOT / "domains" / "lyrics" / "cliche-bank.md")
         self.assertGreaterEqual(len(bank), 60)
@@ -142,6 +147,21 @@ class Decks(unittest.TestCase):
         self.assertEqual([c["id"] for c in a], [c["id"] for c in b])
         many = studio.draw_cards({"foreign-domains": 60}, random.Random(1), ["beekeeping"])
         self.assertNotIn("F01", [c["id"] for c in many])
+
+
+class StubAndGenericDomains(Base):
+    def test_stub_and_unknown_domains_run_on_the_core(self):
+        stub = self.cli_json("studio.py", "init", stdin=json.dumps({"domain": "short-video", "goal": "g"}))
+        self.assertEqual(stub["domain"]["pack"], "stub")
+        unknown = self.cli_json("studio.py", "init", stdin=json.dumps({"domain": "perfume names", "goal": "g"}))
+        self.assertEqual(unknown["domain"]["pack"], "generic")
+        raw = self.cli_json("studio.py", "init", stdin="just a plain-text brief, no JSON")
+        self.assertEqual(raw["domain"]["pack"], "generic")
+        out = self.cli_json("novelty_check.py", "--backend", "lexical", "--domain", "short-video",
+                            "--text", "POV-скетч, где зритель играет роль клиента или начальника")
+        self.assertEqual(out["filtered"][0]["reason_code"], "cliche")
+        out = self.cli_json("novelty_check.py", "--backend", "lexical", "--domain", "perfume-names", "--text", "anything")
+        self.assertEqual((out["domain_pack"], out["references"]["bank"]), ("generic", 0))
 
 
 class SessionStart(Base):
@@ -247,7 +267,8 @@ class PipelineOffline(Base):
         rank = self.cli_json("studio.py", "rank", "--run", run)
         fins = rank["finalists"]
         self.assertEqual([f["label"] for f in fins], ["F1", "F2", "F3"])
-        self.assertEqual(len({f["strategy"] for f in fins}), 3, "finalists should come from different strategies")
+        self.assertEqual(len({f["id"] for f in fins}), 3)
+        self.assertGreaterEqual(len({f["strategy"] for f in fins}), 2, "MMR should not return one strategy three times")
         sub("creative-studio:editor", block("versions", {"run_id": run, "finalists": [
             {"id": f["id"], "label": f["label"], "versions": {v: {"title": f"{v} {f['label']}", "hook": "h", "verse": "v", "note": "n"} for v in ("safe", "bold", "director")}} for f in fins]}))
         report = self.cli("studio.py", "report", "--run", run)

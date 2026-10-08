@@ -295,13 +295,24 @@ KIND_SIGNATURES = (("concepts", "concepts"), ("judgments", "judgments"), ("score
                    ("choice", "selection"))
 
 
+TRAILING_COMMA_RE = re.compile(r",(\s*[}\]])")
+
+
 def _loads_lenient(body: str):
+    """json.loads that survives the two slips models make most: trailing
+    commentary after the object and trailing commas before } or ]."""
     body = body.strip()
-    try:
-        return json.loads(body)
-    except json.JSONDecodeError:
-        obj, _ = json.JSONDecoder().raw_decode(body)  # tolerate trailing commentary
-        return obj
+    last_error = None
+    for candidate in (body, TRAILING_COMMA_RE.sub(r"\1", body)):
+        try:
+            return json.loads(candidate)
+        except json.JSONDecodeError as exc:
+            last_error = exc
+        try:
+            return json.JSONDecoder().raw_decode(candidate)[0]
+        except json.JSONDecodeError as exc:
+            last_error = exc
+    raise last_error
 
 
 def _infer_kind(obj: dict) -> str | None:
