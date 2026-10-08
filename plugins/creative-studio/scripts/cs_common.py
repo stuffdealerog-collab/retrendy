@@ -287,22 +287,55 @@ def human_content(text: str, stop_marker: str = "<!-- cs:auto -->") -> str:
 # ---------------------------------------------------------------- fenced cs blocks
 
 BLOCK_RE = re.compile(r"```[^\n`]*?\bcs:([a-z_]+)[^\n]*\n(.*?)\n\s*```", re.S)
+PLAIN_JSON_RE = re.compile(r"```(?:json)?[ \t]*\n(\{.*?\})\s*\n\s*```", re.S)
+# Agents sometimes fence the block as ```json instead of ```cs:<kind>. A block that
+# carries a run_id and the kind's signature key is recovered instead of lost.
+KIND_SIGNATURES = (("concepts", "concepts"), ("judgments", "judgments"), ("scores", "scores"),
+                   ("reactions", "audience"), ("flags", "review"), ("signals", "trends"), ("insights", "trends"),
+                   ("choice", "selection"))
+
+
+def _loads_lenient(body: str):
+    body = body.strip()
+    try:
+        return json.loads(body)
+    except json.JSONDecodeError:
+        obj, _ = json.JSONDecoder().raw_decode(body)  # tolerate trailing commentary
+        return obj
+
+
+def _infer_kind(obj: dict) -> str | None:
+    if not isinstance(obj, dict) or "run_id" not in obj:
+        return None
+    for key, kind in KIND_SIGNATURES:
+        if key in obj:
+            return kind
+    if "finalists" in obj and any("versions" in f for f in obj["finalists"] if isinstance(f, dict)):
+        return "versions"
+    if "items" in obj:
+        return "baseline"
+    return None
 
 
 def extract_blocks(text: str) -> list[tuple[str, Any]]:
-    """Find ```cs:<kind>``` (or ```json cs:<kind>```) fenced JSON blocks."""
+    """Find ```cs:<kind>``` (or ```json cs:<kind>```) fenced JSON blocks; untagged
+    ```json blocks are accepted when their kind can be inferred unambiguously."""
     found = []
     for kind, body in BLOCK_RE.findall(text or ""):
-        body = body.strip()
         try:
-            found.append((kind, json.loads(body)))
+            found.append((kind, _loads_lenient(body)))
         except json.JSONDecodeError:
-            # Tolerate trailing commentary after the JSON object.
+            warn(f"cs:{kind} block is not valid JSON; skipped")
+    if not found:
+        for body in PLAIN_JSON_RE.findall(text or ""):
             try:
-                obj, _ = json.JSONDecoder().raw_decode(body)
-                found.append((kind, obj))
+                obj = _loads_lenient(body)
             except json.JSONDecodeError:
-                warn(f"cs:{kind} block is not valid JSON; skipped")
+                continue
+            kind = _infer_kind(obj)
+            if kind:
+                warn(f"untagged JSON block accepted as cs:{kind}")
+                found.append((kind, obj))
     return found
 
 

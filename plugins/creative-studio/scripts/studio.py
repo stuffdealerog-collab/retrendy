@@ -268,6 +268,11 @@ def cmd_review_input(args) -> None:
         for w in k.get("line_warnings", []):
             notes.append(f"line warning: {w}")
         md.append(render_concept(pool[k["id"]], "> " + "\n> ".join(notes)))
+    if nov.get("near_duplicates"):
+        md += ["## Near-duplicate pairs (cos between the soft threshold and the duplicate threshold)",
+               "Embeddings cannot tell whether these are one idea twice or two ideas on the same brief. Decide: if they are "
+               "the same idea, flag the weaker one with verdict `cliche` and pattern `duplicate of <id>`.", ""]
+        md += [f"- {n['a']} «{n['a_title']}» ↔ {n['b']} «{n['b_title']}»: cos {n['sim']}" for n in nov["near_duplicates"]]
     path = rdir / "review-input.md"
     cs.atomic_write(path, "\n".join(md))
     out({"review_input": str(path), "kept": len(nov["kept"]), "soft_flagged": nov["counts"]["soft_flagged"]})
@@ -443,13 +448,21 @@ def cmd_rank(args) -> None:
                        "winrate": None if wr is None else round(wr, 3), "final": round(final, 4),
                        "in_tournament": cid in sched["contestants"]})
     ranked.sort(key=lambda r: (not r["in_tournament"], -r["final"]))
-    # Diversity-aware pick (MMR on strategy): don't hand the user three variations of one move.
+    # Diversity-aware pick (MMR): don't hand the user three variations of one move. Similarity
+    # comes from the novelty step's embeddings; without them, same strategy counts as similar.
     lam, n = cfg["pipeline"]["finalist_diversity_lambda"], args.n or cfg["pipeline"]["finalists"]
+    simdata = (cs.read_json(rdir / "novelty.json", {}) or {}).get("similarity") or {}
+    pos = {cid: i for i, cid in enumerate(simdata.get("ids", []))}
+
+    def similar(a: dict, b: dict) -> float:
+        if a["id"] in pos and b["id"] in pos:
+            return simdata["matrix"][pos[a["id"]]][pos[b["id"]]]
+        return 0.7 if a["strategy"] == b["strategy"] else 0.4
+
     pool_c = [r for r in ranked if r["in_tournament"] and not val[r["id"]]["taboo_violation"]] or ranked
     chosen = []
     while pool_c and len(chosen) < n:
-        best = max(pool_c, key=lambda r: lam * r["final"] - (1 - lam) * max(
-            [1.0 if r["strategy"] == c["strategy"] else 0.0 for c in chosen] or [0.0]))
+        best = max(pool_c, key=lambda r: lam * r["final"] - (1 - lam) * max([similar(r, c) for c in chosen] or [0.0]))
         chosen.append(best)
         pool_c.remove(best)
     finalists = [{"label": f"F{i}", **r} for i, r in enumerate(chosen, 1)]
@@ -612,9 +625,11 @@ def cmd_bank_add(args) -> None:
         line = f"- **{prefix}-{nxt:03d}** {tag}{entry.strip()}"
         if args.category and f"## {args.category}" not in text:
             text = text.rstrip() + f"\n\n## {args.category}\n"
-        if args.category:
+        if args.category:  # append at the end of the category section, keeping ID order
             head, _, tail = text.partition(f"## {args.category}\n")
-            text = head + f"## {args.category}\n" + line + "\n" + tail
+            nxt_heading = tail.find("\n## ")
+            section, rest = (tail, "") if nxt_heading < 0 else (tail[:nxt_heading + 1], tail[nxt_heading + 1:])
+            text = head + f"## {args.category}\n" + section.rstrip("\n") + ("\n" if section.strip() else "") + line + "\n" + ("\n" + rest if rest else "")
         else:
             text = text.rstrip() + "\n" + line + "\n"
         added.append(line)

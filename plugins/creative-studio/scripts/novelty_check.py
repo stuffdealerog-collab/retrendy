@@ -220,15 +220,20 @@ def _flatten(refs: list[dict]) -> tuple[list[str], list[dict]]:
     return flat, owner
 
 
-def concept_matches(backend, pool: list[dict], refs: list[dict], k: int = 2) -> list[list[tuple[float, dict, str]]]:
+IDEA_FACETS = ("full", "core", "logline")
+
+
+def concept_matches(backend, pool: list[dict], refs: list[dict], k: int = 2, idea_only: bool = False) -> list[list[tuple[float, dict, str]]]:
     """For each concept: the k closest distinct references as (sim, ref, facet),
-    max over the concept's facets and each reference's variants."""
+    max over the concept's facets (or only the idea-level ones) and each reference's variants."""
     flat, owner = _flatten(refs)
     if not pool or not flat:
         return [[] for _ in pool]
     rows, row_owner = [], []
     for ci, c in enumerate(pool):
         for name, text in facets(c):
+            if idea_only and name not in IDEA_FACETS:
+                continue
             rows.append(text)
             row_owner.append((ci, name))
     best: list[dict[int, tuple[float, dict, str]]] = [{} for _ in pool]
@@ -287,9 +292,12 @@ def collage_of(bank_hits: list[tuple[float, dict, str]], thr: dict) -> bool:
 
 
 def check(pool: list[dict], refs: dict[str, list[dict]], backend, thr: dict, line_cfg: dict) -> dict:
-    # Rhyme entries are lexical line-end checks, not concept-level references.
-    concept_refs = {src: [r for r in items if "rhyme" not in r["tags"]] for src, items in refs.items()}
+    # {rhyme} entries are lexical line-end checks; {structure} entries describe form and
+    # match any concept that describes its own chorus, so cliche-hunter judges those.
+    concept_refs = {src: [r for r in items if not {"rhyme", "structure"} & set(r["tags"])] for src, items in refs.items()}
     per_source = {src: concept_matches(backend, pool, items, 2) for src, items in concept_refs.items() if items}
+    # The collage rule looks only at idea-level facets: one sentence describing the mechanics is weak evidence.
+    bank_idea = concept_matches(backend, pool, concept_refs.get("bank", []), 2, idea_only=True)
     kept, filtered = [], []
     for i, c in enumerate(pool):
         best_sim, best_ref, best_facet = 0.0, None, None
@@ -312,8 +320,8 @@ def check(pool: list[dict], refs: dict[str, list[dict]], backend, thr: dict, lin
             filtered.append({**entry, "status": "filtered", "reason_code": code, "match": match,
                              "reason": f"Its {best_facet} is too close to {what}: «{match['text'][:90]}» "
                                        f"(cos {best_sim:.2f} ≥ {thr['hard']:.2f})"})
-        elif collage_of(per_source.get("bank", [[]] * len(pool))[i], thr):
-            (s1, r1, f1), (s2, r2, f2) = per_source["bank"][i][:2]
+        elif collage_of(bank_idea[i], thr):
+            (s1, r1, f1), (s2, r2, f2) = bank_idea[i][:2]
             filtered.append({**entry, "status": "filtered", "reason_code": "cliche_collage", "match": match,
                              "second_match": {"source": "bank", "ref_id": r2["ref_id"], "facet": f2, "text": r2["text"][:200], "sim": round(s2, 3)},
                              "reason": f"Cliché collage: {r1['ref_id']} «{r1['text'][:50]}» (cos {s1:.2f}) + "
@@ -341,11 +349,19 @@ def check(pool: list[dict], refs: dict[str, list[dict]], backend, thr: dict, lin
                                  "p": k["p"], "status": "filtered", "reason_code": "duplicate",
                                  "match": {"source": "pool", "ref_id": twin["id"], "text": twin["title"], "sim": round(sims[i][dup], 3)},
                                  "reason": f"Duplicate inside the pool of {twin['id']} «{twin['title'][:60]}» (cos {sims[i][dup]:.2f} ≥ {thr['pool_duplicate']:.2f})"})
+        # Same idea or just the same brief? Embeddings can't tell in this band; cliche-hunter decides.
+        near = [{"a": kept[i]["id"], "b": kept[j]["id"], "a_title": kept[i]["title"], "b_title": kept[j]["title"],
+                 "sim": round(sims[i][j], 3)}
+                for x, i in enumerate(survivors) for j in survivors[x + 1:] if thr["near_duplicate"] <= sims[i][j] < thr["pool_duplicate"]][:12]
+        similarity = {"ids": [kept[i]["id"] for i in survivors],
+                      "matrix": [[round(sims[i][j], 3) for j in survivors] for i in survivors]}
         kept = [kept[i] for i in survivors]
+    else:
+        near, similarity = [], {"ids": [k["id"] for k in kept], "matrix": [[1.0]] if kept else []}
 
     # Line-level warnings (domain packs with line_check): clichéd lines and rhymes.
     bank = refs.get("bank", [])
-    sem_bank = [r for r in bank if "rhyme" not in r["tags"]]
+    sem_bank = [r for r in bank if not {"rhyme", "structure"} & set(r["tags"])]
     rhyme_bank = [r for r in bank if "rhyme" in r["tags"]]
     for k in kept:
         sample = k["_concept"].get("sample") or ""
@@ -359,7 +375,8 @@ def check(pool: list[dict], refs: dict[str, list[dict]], backend, thr: dict, lin
         k["line_warnings"] = warnings
         del k["_concept"]
     kept.sort(key=lambda k: -k["novelty_embed"])
-    return {"kept": kept, "filtered": filtered}
+    return {"kept": kept, "filtered": filtered, "near_duplicates": sorted(near, key=lambda n: -n["sim"]),
+            "similarity": similarity}
 
 
 # ------------------------------------------------------------------------- cli
@@ -432,6 +449,7 @@ def main(argv: list[str] | None = None) -> int:
         "pool_duplicate": cfg["lexical_threshold"] if lexical else cfg["pool_duplicate_threshold"],
         "line": cfg["lexical_threshold"] if lexical else cfg["line_threshold"],
         "collage_second": None if lexical else cfg.get("collage_second_threshold"),
+        "near_duplicate": cfg["lexical_soft_threshold"] if lexical else cfg.get("near_duplicate_threshold", 0.75),
     }
     refs = {
         "bank": load_bank(domain, home),
@@ -450,6 +468,7 @@ def main(argv: list[str] | None = None) -> int:
             "by_reason": dict(Counter(f["reason_code"] for f in result["filtered"])),
             "soft_flagged": sum(1 for k in result["kept"] if k["soft_flag"]),
             "line_warnings": sum(len(k["line_warnings"]) for k in result["kept"]),
+            "near_duplicate_pairs": len(result["near_duplicates"]),
         },
         **result,
     }
@@ -460,6 +479,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.out:
         cs.write_json(Path(args.out), report)
     shown = dict(report)
+    shown.pop("similarity", None)  # kept in novelty.json for diversity-aware ranking, too long for stdout
     if args.compact:
         shown["kept"] = [{"id": k["id"], "title": k["title"], "novelty_embed": k["novelty_embed"],
                           "soft_flag": k["soft_flag"], "line_warnings": len(k["line_warnings"])} for k in report["kept"]]

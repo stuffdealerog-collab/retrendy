@@ -66,6 +66,11 @@ class TemplatesAndBlocks(unittest.TestCase):
         kinds = [k for k, _ in cs.extract_blocks(text)]
         self.assertEqual(kinds, ["concepts", "baseline"])
 
+    def test_untagged_json_block_is_recovered_by_signature(self):
+        text = 'Done.\n```json\n{"run_id": "r_1", "judgments": [{"pair": "P01", "winner": "A"}]}\n```'
+        self.assertEqual([k for k, _ in cs.extract_blocks(text)], ["judgments"])
+        self.assertEqual(cs.extract_blocks('```json\n{"judgments": []}\n```'), [])  # no run_id: not ours
+
     def test_cliche_bank_size_and_ids_unique(self):
         bank = nc.parse_bank(ROOT / "domains" / "lyrics" / "cliche-bank.md")
         self.assertGreaterEqual(len(bank), 60)

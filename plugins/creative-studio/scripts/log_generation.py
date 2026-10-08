@@ -167,6 +167,9 @@ def reconcile(home: Path, run_id: str) -> dict:
                 updates[cid].update(status="finalist", reason=f"finalist {finalists[cid]['label']}")
             elif updates[cid]["status"] == "candidate":
                 updates[cid].update(status="rejected", reason=row.get("cut_reason") or "below the finalist cut")
+        for u in updates.values():  # survived the filters but the critic never scored it
+            if u["status"] == "candidate":
+                u.update(status="rejected", reason="not scored by the critic")
 
     selection = cs.read_json(rdir / "selection.json", {}) or {}
     chosen_id = resolve_choice(selection, ranking)

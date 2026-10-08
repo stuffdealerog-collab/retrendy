@@ -52,7 +52,14 @@ move in new words. Look for:
   generic payoff);
 - abstract emotion vocabulary in the sample that the concept promised to
   avoid;
-- items marked SOFT FLAG: decide them explicitly.
+- items marked SOFT FLAG: decide them explicitly;
+- bank entries tagged `{structure}` (title-as-hook, whispered bridge,
+  he-said/she-said, countdown frame, abstract emotion words…): the embedding
+  filter skips them on purpose, so they are entirely your job;
+- the "Near-duplicate pairs" list at the end of the input: two concepts the
+  embeddings found close but not identical. If they are one idea twice, flag
+  the weaker one `cliche` with pattern `duplicate of <id>`; if they are two
+  ideas on the same brief, leave both.
 
 For each concept that deserves a verdict give `cliche` (remove it: name the
 pattern and the existing works/moves it repeats), `borderline` (keep, but the

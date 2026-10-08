@@ -8,9 +8,15 @@ Machine-read by `scripts/novelty_check.py`. Format of an entry:
   separately (max similarity wins), so put the RU and EN phrasing of the same
   cliché in one entry rather than two.
 - `{rhyme}` entries are checked lexically against line endings of the sample
-  lyrics (a warning, not a filter). Every other entry is checked semantically
-  against the whole concept (hard filter at the configured threshold) and
-  against individual sample lines (warning).
+  lyrics (a warning, not a filter).
+- `{structure}` entries describe form (how the chorus repeats, a whispered
+  bridge, a dialogue). Every concept description talks about its own form, so
+  embeddings match these by vocabulary rather than by idea (measured: 0.65-0.75
+  against fresh concepts). They are judged by cliche-hunter, which reads this
+  file, and are skipped by the embedding filter.
+- Every other entry is checked semantically against the concept (hard filter
+  at the configured threshold, collage rule) and against individual sample
+  lines (warning).
 - IDs are stable: never renumber, append new ones at the end of a section with
   the next free number. Local additions go to `<home>/cliche-bank/lyrics.md`
   (same format, prefix `LYL-`), not here, so plugin updates don't erase them.
@@ -111,15 +117,15 @@ Machine-read by `scripts/novelty_check.py`. Format of an entry:
 
 ## Structural moves
 
-- **LY-080** Название песни как хук, повторённый четыре и больше раз в припеве / the title repeated four times as the chorus
-- **LY-081** Модуляция на тон вверх в последнем припеве / key change up for the final chorus
-- **LY-082** Бридж с внезапной тишиной и шёпотом перед финальным припевом / quiet whispered bridge before the last chorus
-- **LY-083** Перечисление «я помню, как…», по строке на воспоминание / list of "I remember when" lines
+- **LY-080** {structure} Название песни как хук, повторённый четыре и больше раз в припеве / the title repeated four times as the chorus
+- **LY-081** {structure} Модуляция на тон вверх в последнем припеве / key change up for the final chorus
+- **LY-082** {structure} Бридж с внезапной тишиной и шёпотом перед финальным припевом / quiet whispered bridge before the last chorus
+- **LY-083** {structure} Перечисление «я помню, как…», по строке на воспоминание / list of "I remember when" lines
 - **LY-084** Финальный твист: всё это было сном / twist ending: it was all a dream
-- **LY-085** Перекличка «он сказал / она сказала» без характеров / he said, she said call and response
-- **LY-086** Дни недели или обратный отсчёт как каркас песни / Monday to Sunday or a countdown as the structure
-- **LY-087** Абстрактные слова-эмоции вместо деталей: боль, пустота, душа, вечность / abstract emotion words instead of concrete detail
-- **LY-088** Голосовое сообщение или звонок как интро / voicemail or phone call sample as the intro
+- **LY-085** {structure} Перекличка «он сказал / она сказала» без характеров / he said, she said call and response
+- **LY-086** {structure} Дни недели или обратный отсчёт как каркас песни / Monday to Sunday or a countdown as the structure
+- **LY-087** {structure} Абстрактные слова-эмоции вместо деталей: боль, пустота, душа, вечность / abstract emotion words instead of concrete detail
+- **LY-088** {structure} Голосовое сообщение или звонок как интро / voicemail or phone call sample as the intro
 - **LY-089** Песня о том, как трудно написать песню / a song about writer's block
 
 ## Stances

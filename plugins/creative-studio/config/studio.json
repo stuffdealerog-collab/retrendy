@@ -7,6 +7,7 @@
     "soft_threshold": 0.7,
     "collage_second_threshold": 0.62,
     "pool_duplicate_threshold": 0.8,
+    "near_duplicate_threshold": 0.75,
     "line_threshold": 0.8,
     "line_min_chars": 12,
     "history_window": 200,
@@ -25,7 +26,7 @@
     "finalists": 3,
     "memory_digest_size": 40,
     "trend_snapshot_max_age_days": 14,
-    "finalist_diversity_lambda": 0.7
+    "finalist_diversity_lambda": 0.6
   },
   "branches": [
     {

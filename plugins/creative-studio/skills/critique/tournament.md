@@ -38,5 +38,6 @@ earlier numbers.
 
 Win rate = (wins + 0.5 × ties) / games. Final score = 0.5 × rubric total +
 0.5 × win rate (configurable). Finalists are chosen greedily with a diversity
-penalty for repeating the same strategy (MMR, λ = 0.7), so the user gets
-genuinely different options.
+penalty (MMR, λ = 0.6): each next finalist maximises 0.6 × final − 0.4 × its
+highest embedding similarity to the finalists already chosen, so the user gets
+genuinely different options rather than three takes on one move.
