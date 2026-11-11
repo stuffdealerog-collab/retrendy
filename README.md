@@ -17,3 +17,8 @@ claude plugin install creative-studio@retrendy
 ```
 
 Документация: [plugins/creative-studio/README.md](plugins/creative-studio/README.md).
+
+## Игровые концепты
+
+- [games/strelka](games/strelka/README.md) — «СТРЕЛКА»: концепт соревновательной Roblox-игры
+  (дизайн-документ, R6-персонажи с анимациями, трейлер, Blender-пайплайн).

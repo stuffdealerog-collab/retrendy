@@ -154,12 +154,12 @@ def run(frames_dir, wav, out_mp4, preview=None):
     total = 1 + beats * fpb - 1
     tmp = os.path.join(frames_dir, "post")
     os.makedirs(tmp, exist_ok=True)
-    f_cap, f_big, f_small = font(F_TITLE, 58), font(F_TITLE, 250), font(F_TITLE, 44)
+    f_cap, f_big, f_small = font(F_TITLE, 58), font(F_TITLE, 168), font(F_TITLE, 40)
     f_time = font(F_MONO, 30)
     captions = [(9.0, 15.4, "ОНИ ПРИШЛИ ЗА КОЛОНКОЙ"), (16.4, 19.9, "КАЖДЫЙ УДАР — В БИТ"),
                 (22.2, 24.4, "БЛОК.  ОТВЕТ."), (26.6, 29.2, "У КОГО КОЛОНКА — ТОГО И ДВОР")]
     cap_layers = {t: chrome_text((W, 110), t, f_cap) for _, _, t in captions}
-    title = chrome_text((W, 330), "СТРЕЛКА", f_big, glow=PINK)
+    title = chrome_text((W, 230), "СТРЕЛКА", f_big, glow=PINK)
     sub = chrome_text((W, 80), "двор на двор  ·  04:04  ·  концепт PvP для Roblox", f_small)
     shukher = chrome_text((W, 330), "ШУХЕР.", font(F_TITLE, 210), fill_top=(255, 90, 100), fill_bot=(120, 20, 40))
     shukher_sub = chrome_text((W, 80), "музыка стихла — все врассыпную", f_small)
@@ -232,13 +232,13 @@ def run(frames_dir, wav, out_mp4, preview=None):
         if beat >= 40.25:
             k = smooth((beat - 40.25) / 0.25)
             z = 1.0 + 0.25 * (1 - smooth((beat - 40.25) / 0.6))
-            t2 = title.resize((int(W * z), int(330 * z)), Image.LANCZOS)
+            t2 = title.resize((int(W * z), int(230 * z)), Image.LANCZOS)
             t2.putalpha(t2.getchannel("A").point(lambda v, k=k: int(v * k)))
-            img.alpha_composite(t2, (int((W - t2.width) / 2), int(205 - (t2.height - 330) / 2)))
+            img.alpha_composite(t2, (int((W - t2.width) / 2), int(18 - (t2.height - 230) / 2)))
             if beat >= 42:
                 k2 = smooth((beat - 42) / 0.6)
                 s2 = sub.copy(); s2.putalpha(s2.getchannel("A").point(lambda v, k=k2: int(v * k)))
-                img.alpha_composite(s2, (0, 560))
+                img.alpha_composite(s2, (0, 226))
         # beat ticks: the on-screen metronome the player times against
         if (16 <= beat < 32) or (40 <= beat < 48):
             cur = int(beat) % 4

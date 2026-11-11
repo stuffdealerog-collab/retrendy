@@ -98,7 +98,7 @@ def main():
         arm.location = keep
 
     # ---- previews
-    lights_and_camera(sc, (0, -6.6, 1.0), (0, 0, 0.86), 58)
+    lights_and_camera(sc, (0, -7.4, 1.05), (0, 0, 0.84), 40)
     sc.render.resolution_x, sc.render.resolution_y = 1600, 800
     for i, (n, (arm, _)) in enumerate(arms.items()):
         arm.rotation_euler = (0, 0, math.radians((18, 8, -8, -18)[i]))
