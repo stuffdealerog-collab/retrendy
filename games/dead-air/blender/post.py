@@ -223,7 +223,7 @@ def run(frames_dir, wav, out_mp4, preview=None):
                 k = min(smooth((beat - b0) / 0.35), smooth((b1 - beat) / 0.3))
                 lay = cap_layers[text].copy()
                 lay.putalpha(lay.getchannel("A").point(lambda v, k=k: int(v * k)))
-                img.alpha_composite(lay, (int((1 - k) * -40), H - 150))
+                img.alpha_composite(lay, (int((1 - k) * -40), H - 178))
         if 32.5 <= beat < 39.6 and since != 0:
             k = min(smooth((beat - 32.5) / 0.3), smooth((39.6 - beat) / 0.4))
             for lay, y in ((shukher, 200), (shukher_sub, 500)):
