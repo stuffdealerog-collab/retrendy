@@ -1,0 +1,15 @@
+[submodule "vendor/skills/ghost-editor"]
+	path = vendor/skills/ghost-editor
+	url = https://github.com/kurbaitaev/ghost-editor
+[submodule "vendor/skills/claude-shorts"]
+	path = vendor/skills/claude-shorts
+	url = https://github.com/AgriciDaniel/claude-shorts
+[submodule "vendor/skills/openmontage"]
+	path = vendor/skills/openmontage
+	url = https://github.com/OpenMontageInc/openmontage
+[submodule "vendor/skills/ffmpeg-skill"]
+	path = vendor/skills/ffmpeg-skill
+	url = https://github.com/kajisho5/ffmpeg-skill
+[submodule "vendor/skills/hyperframes"]
+	path = vendor/skills/hyperframes
+	url = https://github.com/heygen-com/hyperframes
