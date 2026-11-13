@@ -97,7 +97,7 @@ def aluminium():
     return principled("Aluminium_Machined", color=(0.78, 0.78, 0.80), metallic=1.0, roughness=0.22)
 
 
-GLASS_TINT = {"screen": 0.60, "front": 0.30, "rear": 0.20, "roof": 0.50}
+GLASS_TINT = {"screen": 0.30, "front": 0.12, "rear": 0.06, "roof": 0.25}
 
 
 def window_glass(kind="rear"):
@@ -116,7 +116,7 @@ def red_lens():
                       ior=1.49)
 
 
-def emit_white(strength=7.0):
+def emit_white(strength=3.0):
     return principled("Emit_DRL_White", color=(1, 1, 1), emission=(0.92, 0.96, 1.0),
                       emission_strength=strength)
 

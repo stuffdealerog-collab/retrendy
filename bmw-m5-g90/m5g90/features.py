@@ -12,20 +12,37 @@ from shapely import affinity
 
 from . import cut, surf, util, geom2d as G, materials as M, params as P
 
-# reference cameras (position, reference depth of the measured coordinates)
-CAM_SIDE = dict(pos=np.array([-0.008, 15.685, 0.676]), view="side", ref=0.985)
-CAM_FRONT = dict(pos=np.array([5.91, 0.0, 0.615]), view="front", ref=2.35)
-CAM_REAR = dict(pos=np.array([-9.29, 0.0, 0.794]), view="rear", ref=-2.60)
+# The measurements were taken in the 1888x1260 reference tiles; "photo coordinates" are
+# metres at a reference depth of each shot and map linearly to tile pixels (to_px).  The
+# rays are cast through the matched cameras of scene.VIEWS (4 = profile, 2 = front, 8 = rear).
+CAM_SIDE = dict(view="side", n=4, to_px=lambda p: (942.0 - p[:, 0] / 0.00385,
+                                                   805.5 - p[:, 1] / 0.00385))
+CAM_FRONT = dict(view="front", n=2, to_px=lambda p: (944.0 + p[:, 0] * 704.2,
+                                                     630.0 - (p[:, 1] - 0.615) * 704.2))
+CAM_REAR = dict(view="rear", n=8, to_px=lambda p: (944.0 - p[:, 0] * 556.5,
+                                                   630.0 - (p[:, 1] - 0.794) * 556.5))
+TILE_W, TILE_H = 1888, 1260
+
+
+def _rays(cam, pts):
+    from mathutils import Euler
+    from .scene import VIEWS
+    v = VIEWS[cam["n"]]
+    px, py = cam["to_px"](np.asarray(pts, float))
+    s = v["lens"] / 36.0 * TILE_W
+    d_cam = np.stack([(px - TILE_W / 2) / s, (TILE_H / 2 - py) / s, -np.ones(len(px))], -1)
+    R = np.array(Euler([np.radians(a) for a in v["rot"]], "XYZ").to_matrix())
+    d = d_cam @ R.T
+    return np.array(v["loc"], float), d
 
 
 def unproject(body, cam, pts, F=None, _depth=0):
-    """Photo coordinates (2D, at the camera's reference depth) -> 3D points on the body."""
+    """Photo coordinates -> 3D points on the body (first hit of the camera ray)."""
     F = F or body.F
     pts = np.asarray(pts, float)
-    ref3 = cut.to3d(cam["view"], pts, cam["ref"])
-    c = cam["pos"]
-    d = ref3 - c
-    ts = np.linspace(0.75, 1.9, 420)
+    c, d = _rays(cam, pts)
+    dist = np.linalg.norm(c)
+    ts = np.arange(max(dist - 4.5, 0.5), dist + 4.5, 0.008)
     idx = np.full(len(pts), -1)
     for i, t in enumerate(ts):
         p = c + d * t
@@ -151,7 +168,7 @@ TAIL = [[(0.272, 0.905), (0.330, 0.936), (0.450, 0.956), (0.600, 0.966), (0.772,
         [(0.846, 0.866), (0.700, 0.862), (0.500, 0.864), (0.330, 0.880), (0.272, 0.905)]]
 TRUNK = [(0.676, 1.060), (0.668, 0.960), (0.660, 0.862), (0.630, 0.762), (0.570, 0.692),
          (0.470, 0.656), (0.300, 0.648), (0.000, 0.648)]
-REFLECTOR = [(0.888, 0.660), (0.912, 0.650), (0.918, 0.440), (0.892, 0.432)]
+REFLECTOR = [(0.868, 0.655), (0.892, 0.648), (0.898, 0.445), (0.872, 0.438)]
 DIFFUSER = [[(0.130, 0.496), (0.400, 0.498), (0.700, 0.496)],
             [(0.700, 0.496), (0.790, 0.430), (0.862, 0.372)],
             [(0.862, 0.372), (0.800, 0.300), (0.770, 0.240)],
@@ -254,8 +271,8 @@ class Features:
                       [(0.738, 0.742), (0.420, 0.682), (0.108, 0.612)],
                       [(0.108, 0.612), (0.150, 0.30), (0.160, 0.0)]])
         ws = G.rounded(ws, 0.02)
-        bl = sym_top([[(-2.088, 0.0), (-2.062, 0.30), (-2.000, 0.58), (-1.968, 0.690)],
-                      [(-1.968, 0.690), (-1.650, 0.640), (-1.360, 0.582)],
+        bl = sym_top([[(-2.088, 0.0), (-2.062, 0.30), (-2.004, 0.56), (-1.972, 0.655)],
+                      [(-1.972, 0.655), (-1.650, 0.622), (-1.360, 0.582)],
                       [(-1.360, 0.582), (-1.405, 0.30), (-1.418, 0.0)]])
         bl = G.rounded(bl, 0.02)
         roof = sym_top([[(0.060, 0.0), (0.050, 0.30), (0.030, 0.515)],
@@ -344,7 +361,7 @@ class Features:
             self.skin(f"Lens_HeadSide_{sfx}", G.offset(hside, 0.0015), "side", sgn, lens,
                       offset=-0.0008, thickness=0.003, inner=0.012)
             for nm, pts in (("In", DRL_IN), ("Out", DRL_OUT)):
-                dp = Polygon(photo(b, CAM_FRONT, pts)).buffer(0)
+                dp = Polygon(photo(b, CAM_FRONT, pts)).buffer(0).buffer(-0.0025)
                 dp = dp if sgn > 0 else mirror_u(dp)
                 self.skin(f"DRL_{nm}_{sfx}", dp, "front", 1, M.emit_white(), offset=-0.030,
                           thickness=0.010, inner=0.006, edge=0.004)
@@ -375,8 +392,9 @@ class Features:
             self.skin(f"Lens_TailSide_{sfx}", G.offset(tside, 0.001), "side", sgn, red,
                       offset=-0.0006, thickness=0.003, inner=0.012)
             rp = refl if sgn > 0 else mirror_u(refl)
-            self.cut_follow(rp, "rear", -1, 0.004, mat=M.principled(
-                "Reflector_Red", color=(0.35, 0.005, 0.005), roughness=0.15, coat=1.0), inner=0.01)
+            self.skin(f"Reflector_{sfx}", rp, "rear", -1, M.principled(
+                "Reflector_Red", color=(0.35, 0.005, 0.005), roughness=0.15, coat=1.0),
+                offset=0.0012, thickness=0.003, inner=0.008, edge=0.005)
             dp = diff if sgn > 0 else mirror_u(diff)
             self.cut_follow(dp, "rear", -1, 0.010, mat=M.satin_black(), inner=0.02)
             ex = G.rounded(Polygon(photo(b, CAM_REAR, [(0.455, 0.372), (0.722, 0.376),

@@ -36,20 +36,21 @@ REF_TILE = (1888, 1260)
 # ---------------------------------------------------------------------------
 VIEWS = {
     1: dict(label="Спереди слева · 3/4", loc=(3.947, 3.506, 0.648), rot=(92.56, 0.0, 138.22),
-            lens=25.1, wall=8.5, env="studio", exposure=0.0),
+            lens=25.1, wall=8.5, env="studio", exposure=0.0, lights={"STUDIO_Strip_R": 0.15}),
     2: dict(label="Спереди", loc=(6.948, 0.0, 0.670), rot=(89.74, 0.0, 90.08),
-            lens=57.5, wall=9.0, env="studio", exposure=0.0, lights={"STUDIO_WallWash": 0.55}),
+            lens=57.5, wall=9.0, env="studio", exposure=0.0,
+            lights={"STUDIO_WallWash": 0.55, "STUDIO_Strip_F": 0.25}),
     3: dict(label="Спереди справа · 3/4", loc=(6.546, -5.441, 0.573), rot=(96.53, 0.0, 48.13),
             lens=44.3, wall=None, env="daylight", exposure=0.0),
     4: dict(label="Левый профиль", loc=(0.889, 17.011, 0.948), rot=(89.06, 0.0, 176.83),
             lens=79.1, wall=18.0, env="studio", exposure=0.0),
     5: dict(label="Сверху", loc=(3.690, 0.507, 4.353), rot=(-2.35, 31.13, -1.15),
             lens=21.8, wall=None, env="studio", exposure=0.0,
-            lights={"STUDIO_Top": 0.3, "STUDIO_Pool": 0.8}),
+            lights={"STUDIO_Top": 0.3, "STUDIO_Pool": 0.8, "STUDIO_Cabin": 1.0}),
     6: dict(label="Правый профиль", loc=(0.916, -35.093, 1.213), rot=(91.22, 0.0, 1.00),
             lens=130.5, wall=None, env="daylight", exposure=0.0),
     7: dict(label="Сзади слева · 3/4", loc=(-9.091, 4.338, 0.863), rot=(90.84, 0.0, -116.19),
-            lens=51.7, wall=13.5, env="studio", exposure=0.0),
+            lens=51.7, wall=13.5, env="studio", exposure=0.0, lights={"STUDIO_Strip_R": 0.15}),
     8: dict(label="Сзади", loc=(-10.25, 0.0, 0.700), rot=(90.72, 0.0, -89.97),
             lens=85.0, wall=16.0, env="studio", exposure=0.0, lights={"STUDIO_WallWash": 0.7}),
     9: dict(label="Сзади справа · 3/4", loc=(-7.812, -7.052, 1.110), rot=(89.67, 0.0, -45.66),
@@ -60,7 +61,7 @@ QUALITY = {
     #          resolution      spp  adaptive-threshold
     "tiny": ((480, 320), 12, 0.1),          # layout / framing checks only
     "draft": ((960, 640), 24, 0.05),
-    "preview": ((1920, 1280), 96, 0.02),
+    "preview": ((1920, 1280), 64, 0.03),
     "final": ((2880, 1920), 300, 0.008),
 }
 
@@ -423,7 +424,7 @@ def build_studio(collection=None):
 
     # --- car-centric soft boxes (only light the car: see _link_lights) --------------------
     lights = []
-    lights.append(_area("STUDIO_Top", (7.6, 1.8), (0.2, 0, 3.9), (0.2, 0, 0), 60, coll))
+    lights.append(_area("STUDIO_Top", (7.6, 1.8), (0.2, 0, 3.9), (0.2, 0, 0), 45, coll))
     for sgn, tag in ((1, "L"), (-1, "R")):
         lights.append(_area(f"STUDIO_Strip_{tag}", (11.0, 3.2), (0.3, sgn * 5.6, 3.3),
                             (0, 0, 0.7), 300, coll))
@@ -431,6 +432,9 @@ def build_studio(collection=None):
                             (0, 0, 0.45), 30, coll))
     lights.append(_area("STUDIO_Strip_F", (4.6, 0.8), (6.2, 0, 2.3), (0, 0, 0.7), 150, coll))
     lights.append(_area("STUDIO_Strip_B", (4.6, 0.8), (-6.4, 0, 2.3), (0, 0, 0.8), 150, coll))
+    # warm courtesy light inside the cabin, only switched on for the top view
+    lights.append(_area("STUDIO_Cabin", (1.3, 0.9), (-0.35, 0, 1.36), (-0.35, 0, 0.5), 22, coll,
+                        color=(1.0, 0.86, 0.72)))
 
     # --- environment lights (floor pool, wall wash) ----------------------------------------
     _spot("STUDIO_Pool", (0, 0, CEILING_Z - 0.25), (0, 0, 0), 3800, 104, 1.0, coll, radius=0.9)
@@ -534,7 +538,8 @@ def apply_view(n):
             ob.hide_render = ob.hide_viewport = not studio
         if "base_energy" not in ob:
             ob["base_energy"] = ob.data.energy
-        ob.data.energy = ob["base_energy"] * mult.get(ob.name, 1.0)
+        ob.data.energy = ob["base_energy"] * mult.get(
+            ob.name, 0.0 if ob.name == "STUDIO_Cabin" else 1.0)
     if ceil is not None:
         ceil.hide_render = ceil.hide_viewport = not studio
     floor = objs.get("STUDIO_Floor")
@@ -548,7 +553,7 @@ def apply_view(n):
     return cam
 
 
-_BASE_EXPOSURE = {"studio": 0.0, "daylight": 0.0}
+_BASE_EXPOSURE = {"studio": 0.0, "daylight": -0.2}
 
 
 # ---------------------------------------------------------------------------

@@ -113,18 +113,15 @@ def kidney_grille(body, feat, coll):
         offset=0.001, thickness=0.006, inner=0.004, edge=0.004)
     # recessed shutter panel with horizontal slats
     inner = G.offset(both, -0.036)
-    feat.skin("Kidney_Panel", inner, "front", 1, black, offset=-0.030, thickness=0.004, inner=0.015)
+    feat.skin("Kidney_Panel", inner, "front", 1, M.principled("Grille_Shutter", color=(0.006, 0.006, 0.007), roughness=0.55),
+              offset=-0.030, thickness=0.004, inner=0.015)
     x0, z0, x1, z1 = inner.bounds
     slats = []
     for zc in np.linspace(z0, z1, 5)[1:-1]:
         slats.append(sbox(-1, zc - 0.006, 1, zc + 0.006))
     slat = inner.buffer(-0.01).intersection(unary_union(slats))
-    feat.skin("Kidney_Slats", slat, "front", 1, black, offset=-0.018, thickness=0.012,
+    feat.skin("Kidney_Slats", slat, "front", 1, M.satin_black(), offset=-0.018, thickness=0.012,
               inner=0.006, edge=0.005)
-    # centre bridge between the kidneys
-    bridge = kid.intersection(sbox(-0.02, 0, 0.02, 2))
-    feat.skin("Kidney_Bridge", bridge, "front", 1, black, offset=0.004, thickness=0.03, inner=0.01,
-              edge=0.005)
 
 
 def tail_internals(body, feat):
@@ -256,7 +253,7 @@ def emblems(body, feat, coll):
     p, n = surface_frame(body, CAM_REAR, (0.0, 1.002))
     place(move_to(E.roundel(0.078, "Roundel_Boot"), coll), p, n, sink=0.0012)
     # M5 badges
-    p, n = surface_frame(body, CAM_REAR, (-0.415, 1.020))
+    p, n = surface_frame(body, CAM_REAR, (-0.470, 1.022))
     place(move_to(E.m_badge(0.027, "M5_Badge_Boot", style="black"), coll), p, n, sink=0.0003)
     p = unproject(body, CAM_FRONT, [(0.300, 0.622)])[0]
     b = move_to(E.m_badge(0.020, "M5_Badge_Grille", style="black"), coll)
@@ -285,7 +282,7 @@ def intake_internals(body, feat, coll):
         tc = nt.nodes.new("ShaderNodeTexCoord")
         vor = nt.nodes.new("ShaderNodeTexVoronoi")
         vor.feature = "DISTANCE_TO_EDGE"
-        vor.inputs["Scale"].default_value = 70.0
+        vor.inputs["Scale"].default_value = 320.0
         ramp = nt.nodes.new("ShaderNodeValToRGB")
         ramp.color_ramp.elements[0].position = 0.04
         ramp.color_ramp.elements[1].position = 0.10

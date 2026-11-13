@@ -55,6 +55,8 @@ def main(argv=None):
     ap.add_argument("--no-interior", action="store_true")
     ap.add_argument("--no-wheels", action="store_true")
     ap.add_argument("--stages", default=None)
+    ap.add_argument("--glb", default=None, help="also export the car as glTF binary")
+    ap.add_argument("--sheet", default=None, help="compose the rendered views into a contact sheet")
     if argv is None:
         argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else sys.argv[1:]
     a = ap.parse_args(argv)
@@ -71,6 +73,16 @@ def main(argv=None):
         paths = S.render_all(a.render, quality=a.render_quality or a.quality,
                              views=[int(v) for v in a.views.split(",")])
         print("[build] rendered", paths)
+        if a.sheet:
+            S.contact_sheet(paths, a.sheet)
+    if a.glb:
+        for o in bpy.data.objects:
+            o.select_set(any(c.name == "M5_G90" or c.name in
+                             [k.name for k in bpy.data.collections["M5_G90"].children_recursive]
+                             for c in o.users_collection))
+        bpy.ops.export_scene.gltf(filepath=os.path.abspath(a.glb), use_selection=True,
+                                  export_apply=True, export_format="GLB")
+        print("[build] exported", a.glb)
 
 
 if __name__ == "__main__":

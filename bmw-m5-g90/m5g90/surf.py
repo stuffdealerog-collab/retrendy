@@ -150,8 +150,8 @@ under_z = curve([(2.45, 0.165), (1.90, 0.150), (-1.90, 0.150), (-2.30, 0.220), (
 def chin(z):
     """Front bumper below the ridge at kidney-bottom height: scoops back, then the lip steps out."""
     zr = 0.497
-    t = np.clip((zr - z) / 0.17, 0.0, 1.0)
-    return 0.070 * t ** 1.35 - 0.064 * sstep(0.278, 0.222, z)
+    t = np.clip((zr - z) / 0.15, 0.0, 1.0)
+    return 0.075 * t ** 1.25 - 0.070 * sstep(0.275, 0.228, z)
 
 
 def k_shoulder(x):
@@ -237,13 +237,7 @@ class Body:
     def front_x(ay, z):
         hi = sstep(0.52, 0.80, z)                       # more plan sweep higher up
         sweep = (0.15 + 0.20 * hi) * ay ** 2.2 + (0.10 + 0.10 * hi) * ppow((ay - 0.74) / 0.20, 3.0)
-        # cheek facet: outboard of a diagonal crease (headlight inner corner -> bumper corner)
-        # the nose is chamfered back
-        yc = 0.515 + (0.657 - z) * 1.27
-        d = ay - yc
-        gate = sstep(0.40, 0.47, z) * sstep(0.70, 0.64, z)
-        facet = 0.42 * gate * 0.5 * (d + np.sqrt(d * d + 0.006 ** 2))
-        return nose_x(z) - sweep - facet - sstep(0.44, 0.57, ay) * chin(z)
+        return nose_x(z) - sweep - sstep(0.44, 0.57, ay) * chin(z)
 
     @staticmethod
     def rear_x(ay, z):
